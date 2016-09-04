@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from thevectorlab.net/flatlab/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 11 Jun 2016 17:56:12 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +15,14 @@
     <link href="<?= base_url() ?>backend/assets/css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
     <link href="<?= base_url() ?>backend/assets/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>backend/assets/assets/bootstrap-fileupload/bootstrap-fileupload.css" />
     <link href="<?= base_url() ?>backend/assets/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
     <link rel="stylesheet" href="<?= base_url() ?>backend/assets/css/owl.carousel.css" type="text/css">
+
+    <!--dynamic table-->
+    <link href="<?= base_url() ?>backend/assets/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>backend/assets/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url() ?>backend/assets/assets/data-tables/DT_bootstrap.css" />
 
     <!--right slidebar-->
     <link href="<?= base_url() ?>backend/assets/css/slidebars.css" rel="stylesheet">
@@ -51,71 +55,6 @@
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
             <ul class="nav top-menu">
-                <!-- inbox dropdown start-->
-                <li id="header_inbox_bar" class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-important">5</span>
-                    </a>
-                    <ul class="dropdown-menu extended inbox">
-                        <div class="notify-arrow notify-arrow-red"></div>
-                        <li>
-                            <p class="red">You have 5 new messages</p>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="img/avatar-mini.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Jonathan Smith</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                <span class="message">
-                                        Hello, this is an example msg.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="img/avatar-mini2.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Jhon Doe</span>
-                                    <span class="time">10 mins</span>
-                                    </span>
-                                <span class="message">
-                                     Hi, Jhon Doe Bhai how are you ?
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="img/avatar-mini3.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Jason Stathum</span>
-                                    <span class="time">3 hrs</span>
-                                    </span>
-                                <span class="message">
-                                        This is awesome dashboard.
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="img/avatar-mini4.jpg"></span>
-                                <span class="subject">
-                                    <span class="from">Jondi Rose</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                <span class="message">
-                                        Hello, this is metrolab
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">See all messages</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- inbox dropdown end -->
                 <!-- notification dropdown start-->
                 <li id="header_notification_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -187,7 +126,7 @@
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                         <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                         <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
-                        <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                        <li><a href="<?= base_url('logout') ?>"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
                 <!-- user login dropdown end -->

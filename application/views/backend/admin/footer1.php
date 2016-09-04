@@ -1,14 +1,14 @@
 <!--main content end-->
 
 <!--footer start-->
-<footer class="site-footer">
+<!--<footer class="site-footer">
     <div class="text-center">
         <?= date('Y') ?> &copy; Mahartha Handicraft.
         <a href="#" class="go-top">
             <i class="fa fa-angle-up"></i>
         </a>
     </div>
-</footer>
+</footer> -->
 <!--footer end-->
 </section>
 
@@ -37,31 +37,5 @@ if(isset($script)){
 }
 ?>
 
-<script>
 
-    //owl carousel
-
-    $(document).ready(function() {
-        $("#owl-demo").owlCarousel({
-            navigation : true,
-            slideSpeed : 300,
-            paginationSpeed : 400,
-            singleItem : true,
-            autoPlay:true
-
-        });
-    });
-
-    //custom select box
-
-    $(function(){
-        $('select.styled').customSelect();
-    });
-
-    $(window).on("resize",function(){
-        var owl = $("#owl-demo").data("owlCarousel");
-        owl.reinit();
-    });
-
-</script>
 </html>
