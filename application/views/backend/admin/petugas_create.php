@@ -10,7 +10,7 @@
                 <div class="col-lg-6">
                     <section class="panel">
                         <header class="panel-heading">
-                            Basic Forms
+                            Petugas Toko Detail
                         </header>
                         <div class="panel-body">
                             <div class="form-group">
@@ -46,7 +46,7 @@
                 <div class="col-lg-6">
                     <section class="panel">
                         <header class="panel-heading">
-                            Basic Forms
+                            Users Detail
                         </header>
                         <div class="panel-body">
                             <div class="form-group">

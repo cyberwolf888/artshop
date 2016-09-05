@@ -27,11 +27,32 @@ class PetugasToko extends CI_Model
         $this->db->insert('petugas_toko', $this);
     }
 
+    public function edit($id,$users_id,$photo=null)
+    {
+        $this->users_id = $users_id;
+        $this->fullname = $this->input->post('fullname');
+        $this->alamat = $this->input->post('alamat');
+        $this->no_hp = $this->input->post('no_hp');
+        $this->created_at = date("Y-m-d H:i:s");
+        $this->photo = $photo;
+        $this->db->where('id', $id);
+        $this->db->update('petugas_toko', $this);
+    }
     public function getAll()
     {
-        $this->db->select('*,users.email');
+        $this->db->select('petugas_toko.*,users.email');
         $this->db->from('petugas_toko');
         $this->db->join('users', 'users.id = petugas_toko.users_id');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function find($id)
+    {
+        $this->db->select('petugas_toko.*,users.email, users.status');
+        $this->db->from('petugas_toko');
+        $this->db->join('users', 'users.id = petugas_toko.users_id');
+        $this->db->where('petugas_toko.id', $id);
         $query = $this->db->get();
         return $query;
     }

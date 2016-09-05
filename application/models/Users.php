@@ -47,6 +47,12 @@ class Users extends CI_Model{
         return  $insert_id;
     }
 
+    public function edit($id,$data)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('users', $data);
+    }
+
     public function login($email, $password){
         $query = $this->db->get_where('users', ['email'=>$email, 'password'=>md5(md5($password))]);
         if($query->num_rows()==1){

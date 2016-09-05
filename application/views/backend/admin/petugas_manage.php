@@ -42,7 +42,7 @@
                                         <td><?= $row->no_hp ?></td>
                                         <td><?= $row->alamat ?></td>
                                         <td><?= $row->email ?></td>
-                                        <td>-</td>
+                                        <td><a href="<?= base_url('admin/petugas/edit/'.$row->id) ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a> <a href="<?= base_url('admin/petugas/view/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </a></td>
                                     </tr>
                                 <?php endforeach; ?>
 
