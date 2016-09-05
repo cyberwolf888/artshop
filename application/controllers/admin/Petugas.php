@@ -12,7 +12,14 @@ class Petugas extends CI_Controller {
 
     public function manage()
     {
-        $this->load->view('backend/admin/petugas_manage',['script'=>'backend/admin/page_script/petugas_manage']);
+        $this->load->model('petugasToko');
+
+        $petugas = $this->petugasToko->getAll();
+
+        $this->load->view('backend/admin/petugas_manage',[
+            'script'=>'backend/admin/page_script/petugas_manage',
+            'model'=>$petugas->result()
+        ]);
     }
 
     public function create()
@@ -49,6 +56,11 @@ class Petugas extends CI_Controller {
         }else{
             $this->load->view('backend/admin/petugas_create',['script'=>'backend/admin/page_script/petugas_create']);
         }
+    }
+
+    public function edit()
+    {
+
     }
 
     public function post_create()
