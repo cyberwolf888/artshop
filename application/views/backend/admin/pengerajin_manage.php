@@ -16,10 +16,10 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Manage Petugas
+                        Manage Pengerajin
                         <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
-                            <a href="<?= base_url('admin/petugas/create') ?>" class="btn btn-primary" style="color: #FFF;"><i class="fa fa-plus"></i> Add New Data</a>
+                            <a href="<?= base_url('admin/pengerajin/create') ?>" class="btn btn-primary" style="color: #FFF;"><i class="fa fa-plus"></i> Add New Data</a>
                         </span>
                     </header>
                     <div class="panel-body">
@@ -31,7 +31,8 @@
                                     <th>No HP</th>
                                     <th>Alamat</th>
                                     <th>Email</th>
-                                    <th>Status</th>
+                                    <th>Status Users</th>
+                                    <th>Status Pengerajin</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -43,8 +44,9 @@
                                         <td><?= $row->no_hp ?></td>
                                         <td><?= $row->alamat ?></td>
                                         <td><?= $row->email ?></td>
-                                        <td><?= $this->users->getStatusLabel($row->status) ?></td>
-                                        <td><a href="<?= base_url('admin/petugas/edit/'.$row->id) ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a> <a href="<?= base_url('admin/petugas/view/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </a></td>
+                                        <td><?= $this->users->getStatusLabel($row->users_status) ?></td>
+                                        <td><?= $this->pengerajinModel->getStatusLabel($row->status) ?></td>
+                                        <td><a href="<?= base_url('admin/pengerajin/edit/'.$row->id) ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a> <a href="<?= base_url('admin/pengerajin/view/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </a></td>
                                     </tr>
                                 <?php endforeach; ?>
 
@@ -55,7 +57,8 @@
                                     <th>No HP</th>
                                     <th>Alamat</th>
                                     <th>Email</th>
-                                    <th>Status</th>
+                                    <th>Status Users</th>
+                                    <th>Status Pengerajin</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>

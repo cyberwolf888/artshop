@@ -17,7 +17,7 @@
             </li>
 
             <li>
-                <a href="index-2.html">
+                <a href="<?= base_url('admin/pengerajin/manage') ?>">
                     <i class="fa fa-dashboard"></i>
                     <span>Pengerajin</span>
                 </a>

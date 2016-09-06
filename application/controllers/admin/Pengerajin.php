@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Petugas extends CI_Controller {
-
+class Pengerajin extends CI_Controller
+{
     public function __construct()
     {
         // Call the CI_Model constructor
@@ -12,13 +11,13 @@ class Petugas extends CI_Controller {
 
     public function manage()
     {
-        $this->load->model('petugasToko');
+        $this->load->model('pengerajinModel');
 
-        $petugas = $this->petugasToko->getAll();
+        $model = $this->pengerajinModel->getAll();
 
-        $this->load->view('backend/admin/petugas_manage',[
+        $this->load->view('backend/admin/pengerajin_manage',[
             'script'=>'backend/admin/page_script/petugas_manage',
-            'model'=>$petugas->result()
+            'model'=>$model->result()
         ]);
     }
 
@@ -26,7 +25,7 @@ class Petugas extends CI_Controller {
     {
         $this->load->library('form_validation');
         if($this->input->post('email')){
-            $this->load->model('petugasToko');
+            $this->load->model('pengerajinModel');
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
@@ -34,12 +33,12 @@ class Petugas extends CI_Controller {
             $this->form_validation->set_rules('no_hp', 'No. Telp', 'required|min_length[5]|max_length[12]');
             $this->form_validation->set_rules('alamat', 'Address', 'required|min_length[5]|max_length[100]');
             if ($this->form_validation->run() == FALSE){
-                $this->load->view('backend/admin/petugas_create',['script'=>'backend/admin/page_script/petugas_create']);
+                $this->load->view('backend/admin/pengerajin_create',['script'=>'backend/admin/page_script/petugas_create']);
             }
             else{
                 $photo = null;
                 if(isset($_FILES['photo'])){
-                    $config['upload_path']          = FCPATH.'images\profile\petugas';
+                    $config['upload_path']          = FCPATH.'images\profile\pengerajin';
                     $config['allowed_types']        = 'gif|jpg|png';
                     $config['max_size']             = 2048;
                     $config['encrypt_name']         = TRUE;
@@ -49,20 +48,20 @@ class Petugas extends CI_Controller {
                     }
                 }
                 $user_id = $this->users->insert_petugas();
-                $this->petugasToko->insert($user_id,$photo);
-                $this->session->set_flashdata('success', 'Petugas account has been succesfully created!');
-                redirect('admin/petugas/manage');
+                $this->pengerajinModel->insert($user_id,$photo);
+                $this->session->set_flashdata('success', 'Pengerajin account has been succesfully created!');
+                redirect('admin/pengerajin/manage');
             }
         }else{
-            $this->load->view('backend/admin/petugas_create',['script'=>'backend/admin/page_script/petugas_create']);
+            $this->load->view('backend/admin/pengerajin_create',['script'=>'backend/admin/page_script/petugas_create']);
         }
     }
 
     public function edit($id)
     {
         $this->load->library('form_validation');
-        $this->load->model('petugasToko');
-        $model = $this->petugasToko->find($id)->result()[0];
+        $this->load->model('pengerajinModel');
+        $model = $this->pengerajinModel->find($id)->result()[0];
         if($model){
             if($this->input->post('email')){
                 $this->form_validation->set_rules('password', 'Password', 'required');
@@ -78,17 +77,17 @@ class Petugas extends CI_Controller {
                 }
 
                 if ($this->form_validation->run() == FALSE){
-                    $this->load->view('backend/admin/petugas_edit',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
+                    $this->load->view('backend/admin/pengerajin_edit',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
                 }
                 else{
                     $photo = null;
                     if(isset($_FILES['photo'])){
                         if($model->photo!=''){
-                            if(is_file(FCPATH . 'images\profile\petugas' . $model->photo)){
-                                unlink(FCPATH . 'images\profile\petugas' . $model->photo);
+                            if(is_file(FCPATH . 'images\profile\pengerajin' . $model->photo)){
+                                unlink(FCPATH . 'images\profile\pengerajin' . $model->photo);
                             }
                         }
-                        $config['upload_path']          = FCPATH.'images\profile\petugas';
+                        $config['upload_path']          = FCPATH.'images\profile\pengerajin';
                         $config['allowed_types']        = 'gif|jpg|png';
                         $config['max_size']             = 2048;
                         $config['encrypt_name']         = TRUE;
@@ -106,12 +105,12 @@ class Petugas extends CI_Controller {
                     );
 
                     $this->users->edit($model->users_id,$data);
-                    $this->petugasToko->edit($model->id,$model->users_id,$photo,$model);
-                    $this->session->set_flashdata('success', 'Petugas account has been succesfully edited!');
-                    redirect('admin/petugas/manage');
+                    $this->pengerajinModel->edit($model->id,$model->users_id,$photo,$model);
+                    $this->session->set_flashdata('success', 'Pengerajin account has been succesfully edited!');
+                    redirect('admin/pengerajin/manage');
                 }
             }else{
-                $this->load->view('backend/admin/petugas_edit',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
+                $this->load->view('backend/admin/pengerajin_edit',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
             }
 
         }
@@ -120,13 +119,8 @@ class Petugas extends CI_Controller {
     public function view($id)
     {
         $this->load->library('form_validation');
-        $this->load->model('petugasToko');
-        $model = $this->petugasToko->find($id)->result()[0];
-        $this->load->view('backend/admin/petugas_view',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
-    }
-
-    public function post_create()
-    {
-        print_r($this->input->file('email'));
+        $this->load->model('pengerajinModel');
+        $model = $this->pengerajinModel->find($id)->result()[0];
+        $this->load->view('backend/admin/pengerajin_view',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
     }
 }

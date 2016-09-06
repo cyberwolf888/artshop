@@ -3,16 +3,17 @@
 /**
  * Created by PhpStorm.
  * User: Karen
- * Date: 8/26/2016
- * Time: 3:40 PM
+ * Date: 9/6/2016
+ * Time: 9:08 PM
  */
-class PetugasToko extends CI_Model
+class PengerajinModel extends CI_Model
 {
     public $users_id;
     public $fullname;
     public $alamat;
     public $no_hp;
     public $photo;
+    public $status;
     public $created_at;
     public $updated_at;
 
@@ -24,7 +25,8 @@ class PetugasToko extends CI_Model
         $this->no_hp = $this->input->post('no_hp');
         $this->created_at = date("Y-m-d H:i:s");
         $this->photo = $photo;
-        $this->db->insert('petugas_toko', $this);
+        $this->status = '1';
+        $this->db->insert('pengerajin', $this);
     }
 
     public function edit($id,$users_id,$photo=null,$model)
@@ -35,26 +37,33 @@ class PetugasToko extends CI_Model
         $this->no_hp = $this->input->post('no_hp');
         $this->updated_at = date("Y-m-d H:i:s");
         $this->created_at = $model->created_at;
+        $this->status = $this->input->post('status_member');
         $this->photo = $photo;
         $this->db->where('id', $id);
-        $this->db->update('petugas_toko', $this);
+        $this->db->update('pengerajin', $this);
     }
     public function getAll()
     {
-        $this->db->select('petugas_toko.*,users.email,users.status');
-        $this->db->from('petugas_toko');
-        $this->db->join('users', 'users.id = petugas_toko.users_id');
+        $this->db->select('pengerajin.*,users.email,users.status AS users_status');
+        $this->db->from('pengerajin');
+        $this->db->join('users', 'users.id = pengerajin.users_id');
         $query = $this->db->get();
         return $query;
     }
 
     public function find($id)
     {
-        $this->db->select('petugas_toko.*,users.email, users.status');
-        $this->db->from('petugas_toko');
-        $this->db->join('users', 'users.id = petugas_toko.users_id');
-        $this->db->where('petugas_toko.id', $id);
+        $this->db->select('pengerajin.*,users.email,users.status AS users_status');
+        $this->db->from('pengerajin');
+        $this->db->join('users', 'users.id = pengerajin.users_id');
+        $this->db->where('pengerajin.id', $id);
         $query = $this->db->get();
         return $query;
+    }
+
+    public function getStatusLabel($status)
+    {
+        $label = ['1'=>'Available','2'=>'Full','0'=>'Banned'];
+        return $label[$status];
     }
 }
