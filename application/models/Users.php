@@ -60,6 +60,19 @@ class Users extends CI_Model{
         return  $insert_id;
     }
 
+    public function insert_admin()
+    {
+        $this->email = $this->input->post('email');
+        $this->password =  md5(md5($this->input->post('password')));
+        $this->status = "1";
+        $this->type = "4";
+        $this->created_at = date("Y-m-d H:i:s");
+        $this->db->insert('users', $this);
+        $insert_id = $this->db->insert_id();
+
+        return  $insert_id;
+    }
+
     public function edit($id,$data)
     {
         $this->db->where('id', $id);

@@ -30,6 +30,13 @@
                 </a>
             </li>
 
+            <li>
+                <a href="<?= base_url('admin/admin/manage') ?>">
+                    <i class="fa fa-dashboard"></i>
+                    <span>Admin</span>
+                </a>
+            </li>
+
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-laptop"></i>
