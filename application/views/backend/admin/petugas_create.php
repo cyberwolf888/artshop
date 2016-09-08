@@ -6,7 +6,7 @@
                 <i class="fa fa-times"></i>
             </button>',"</div>"); ?>
         <div class="row">
-            <?= form_open('admin/petugas/create', ['enctype'=>'multipart/form-data']); ?>
+            <?= form_open('', ['enctype'=>'multipart/form-data']); ?>
                 <div class="col-lg-6">
                     <section class="panel">
                         <header class="panel-heading">

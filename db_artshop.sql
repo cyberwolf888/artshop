@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 07 Sep 2016 pada 17.05
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 7.0.5
+-- Host: localhost
+-- Generation Time: 08 Sep 2016 pada 09.36
+-- Versi Server: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -81,7 +81,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `users_id`, `fullname`, `alamat`, `no_hp`, `photo`, `kode_pos`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', NULL);
+(1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', '2016-09-08 07:23:13'),
+(2, 14, 'Member Wijaya', 'Jalan Wisnu Marga Belayu No 19', '082247464196', NULL, '82181', '2016-09-08 07:04:57', '2016-09-08 07:19:16');
 
 -- --------------------------------------------------------
 
@@ -138,7 +139,8 @@ INSERT INTO `petugas_toko` (`id`, `users_id`, `fullname`, `no_hp`, `alamat`, `ph
 (5, 9, 'Ganda Edukasi', '123213123', 'Jalan P. Misol No.66', '43a33de6d628d12e109f8aa0840e37a4.jpg', '2016-09-04 14:24:22', NULL),
 (6, 5, 'Ganda Edukasi', '123213123', 'Jalan P. Misol No.66', NULL, '2016-09-05 12:48:30', NULL),
 (7, 1, 'Petugas Toko', '08573474847', 'Jalan Nangka Utara', '8784f0e82cb64250a2d05693fdab79d5.jpg', '2016-09-05 12:50:50', NULL),
-(9, 10, 'Petugas Ganteng Berani', '082247464196', 'Jalan Wisnu Marga Belayu No 19', NULL, '2016-09-05 12:51:03', '2016-09-06 13:52:31');
+(9, 10, 'Petugas Ganteng Berani', '082247464196', 'Jalan Wisnu Marga Belayu No 19', NULL, '2016-09-05 12:51:03', '2016-09-06 13:52:31'),
+(10, 13, 'Member tetst', '082247464196', 'Jalan Wisnu Marga Belayu No 19', NULL, '2016-09-08 07:02:27', '2016-09-08 07:24:07');
 
 -- --------------------------------------------------------
 
@@ -197,7 +199,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'member@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-08-27 10:15:28', NULL),
+(1, 'member@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '1', '1', NULL, '2016-08-27 10:15:28', '2016-09-08 07:23:12'),
 (2, 'petugas@mail.com', '9da4185ea55998eb7846745fd0ced59e', '2', '2', NULL, '2016-08-27 16:20:19', NULL),
 (3, 'pengerajin@mail.com', '8ed358a7da3cc760364909d4aaf7321e', '1', '3', NULL, '2016-08-27 16:21:56', '2016-09-06 13:49:46'),
 (4, 'admin@mail.com', '0b77520f93de693bdab0060746e38165', '1', '4', NULL, '2016-08-27 16:25:43', NULL),
@@ -208,7 +210,9 @@ INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `crea
 (9, 'bedebah@aisdhashdj.com', '9da4185ea55998eb7846745fd0ced59e', '1', '2', NULL, '2016-09-04 14:24:22', NULL),
 (10, 'xxx.imd@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '1', '2', NULL, '2016-09-06 13:34:59', '2016-09-06 13:52:31'),
 (11, 'xxx.official@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '2', '2', NULL, '2016-09-06 13:36:29', '2016-09-06 13:43:55'),
-(12, 'admin.official@gmail.com', '0b77520f93de693bdab0060746e38165', '2', '4', NULL, '2016-09-07 14:55:00', '2016-09-07 14:58:02');
+(12, 'admin.official@gmail.com', '0b77520f93de693bdab0060746e38165', '2', '4', NULL, '2016-09-07 14:55:00', '2016-09-07 14:58:02'),
+(13, 'member.imd@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '2', '2', NULL, '2016-09-08 07:02:27', '2016-09-08 07:24:07'),
+(14, 'asdmember.imd@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-09-08 07:04:57', '2016-09-08 07:19:16');
 
 --
 -- Indexes for dumped tables
@@ -280,7 +284,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pengerajin`
 --
@@ -290,7 +294,7 @@ ALTER TABLE `pengerajin`
 -- AUTO_INCREMENT for table `petugas_toko`
 --
 ALTER TABLE `petugas_toko`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `product`
 --
@@ -305,7 +309,7 @@ ALTER TABLE `product_detail`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

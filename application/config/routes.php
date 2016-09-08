@@ -68,3 +68,7 @@ $route['logout'] = 'frontend/logout';
 
 //Admin route
 $route['admin'] = 'admin/dashboard/index';
+$route['admin/member/manage'] = 'admin/memberController/manage';
+$route['admin/member/create'] = 'admin/memberController/create';
+$route['admin/member/edit/(:any)'] = 'admin/memberController/edit/$1';
+$route['admin/member/view/(:any)'] = 'admin/memberController/view/$1';

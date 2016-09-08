@@ -24,7 +24,7 @@
             </li>
 
             <li>
-                <a href="index-2.html">
+                <a href="<?= base_url('admin/member/manage') ?>">
                     <i class="fa fa-dashboard"></i>
                     <span>Member</span>
                 </a>
