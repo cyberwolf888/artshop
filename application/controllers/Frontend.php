@@ -21,9 +21,9 @@ class Frontend extends CI_Controller {
             if($this->session->type==1){
                 redirect('/member');
             }elseif($this->session->type==2){
-                redirect('/pengerajin');
+                redirect('/petugas');
             }elseif($this->session->type==3){
-                redirect('/petugastoko');
+                redirect('/pengerajin');
             }elseif($this->session->type==4){
                 redirect('/admin');
             }
@@ -51,9 +51,9 @@ class Frontend extends CI_Controller {
             if($this->session->type==1){
                 redirect('/member');
             }elseif($this->session->type==2){
-                redirect('/pengerajin');
+                redirect('/petugas');
             }elseif($this->session->type==3){
-                redirect('/petugastoko');
+                redirect('/pengerajin');
             }elseif($this->session->type==4){
                 redirect('/admin');
             }

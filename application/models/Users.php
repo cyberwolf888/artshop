@@ -86,9 +86,9 @@ class Users extends CI_Model{
             if($user->type==1){
                 $profile = $this->db->get_where('member', ['users_id'=>$user->id])->result()[0];
             }elseif($user->type==2){
-                $profile = $this->db->get_where('pengerajin', ['users_id'=>$user->id])->result()[0];
-            }elseif($user->type==3){
                 $profile = $this->db->get_where('petugas_toko', ['users_id'=>$user->id])->result()[0];
+            }elseif($user->type==3){
+                $profile = $this->db->get_where('pengerajin', ['users_id'=>$user->id])->result()[0];
             }elseif($user->type==4){
                 $profile = $this->db->get_where('admin', ['users_id'=>$user->id])->result()[0];
             }

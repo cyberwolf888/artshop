@@ -72,3 +72,6 @@ $route['admin/member/manage'] = 'admin/memberController/manage';
 $route['admin/member/create'] = 'admin/memberController/create';
 $route['admin/member/edit/(:any)'] = 'admin/memberController/edit/$1';
 $route['admin/member/view/(:any)'] = 'admin/memberController/view/$1';
+
+//Petugas route
+$route['petugas'] = 'petugas/dashboard/index';
