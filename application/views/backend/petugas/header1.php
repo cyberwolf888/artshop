@@ -8,7 +8,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="<?= base_url() ?>backend/assets/img/favicon.html">
 
-    <title>Admin</title>
+    <title>Petugas Toko</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url() ?>backend/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -136,6 +136,6 @@
     </header>
     <!--header end-->
     <!--sidebar start-->
-    <?php $this->load->view('backend/admin/menu') ?>
+    <?php $this->load->view('backend/petugas/menu') ?>
     <!--sidebar end-->
     <!--main content start-->

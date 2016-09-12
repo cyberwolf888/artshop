@@ -3,55 +3,48 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <li>
-                <a class="active" href="index-2.html">
+                <a href="<?= base_url('petugas') ?>">
                     <i class="fa fa-dashboard"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a href="<?= base_url('admin/petugas/manage') ?>">
+                <a href="<?= base_url('petugas/category/manage') ?>">
                     <i class="fa fa-dashboard"></i>
-                    <span>Petugas</span>
+                    <span>Category</span>
                 </a>
             </li>
 
             <li>
-                <a href="<?= base_url('admin/pengerajin/manage') ?>">
+                <a href="<?= base_url('petugas/souvenir/manage') ?>">
                     <i class="fa fa-dashboard"></i>
-                    <span>Pengerajin</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= base_url('admin/member/manage') ?>">
-                    <i class="fa fa-dashboard"></i>
-                    <span>Member</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= base_url('admin/admin/manage') ?>">
-                    <i class="fa fa-dashboard"></i>
-                    <span>Admin</span>
+                    <span>Souvenir</span>
                 </a>
             </li>
 
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-laptop"></i>
-                    <span>Laporan</span>
+                    <span>Pemesanan</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Boxed Page</a></li>
-                    <li><a  href="horizontal_menu.html">Horizontal Menu</a></li>
-                    <li><a  href="header-color.html">Different Color Top bar</a></li>
-                    <li><a  href="mega_menu.html">Mega Menu</a></li>
-                    <li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
-                    <li><a  href="email_template.html" target="_blank">Email Template</a></li>
+                    <li><a  href="boxed_page.html">Customer</a></li>
+                    <li><a  href="horizontal_menu.html">Pengerajin</a></li>
                 </ul>
             </li>
-        </ul>
+
+            <li class="sub-menu">
+                <a href="javascript:;" >
+                    <i class="fa fa-laptop"></i>
+                    <span>Pembayaran</span>
+                </a>
+                <ul class="sub">
+                    <li><a  href="boxed_page.html">Customer</a></li>
+                    <li><a  href="horizontal_menu.html">Pengerajin</a></li>
+                </ul>
+            </li>
+
         <!-- sidebar menu end-->
     </div>
 </aside>
