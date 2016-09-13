@@ -28,4 +28,18 @@ class ProductModel extends CI_Model
 
         return  $insert_id;
     }
+
+    public function getAll()
+    {
+        $this->db->select('product.*,categories.label');
+        $this->db->from('product');
+        $this->db->join('categories', 'categories.id = product.categories_id');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function find($id)
+    {
+        //TODO find product
+    }
 }

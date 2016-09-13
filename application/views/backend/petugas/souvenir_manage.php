@@ -31,11 +31,23 @@
                                     <th>Category</th>
                                     <th>Price</th>
                                     <th>Discount</th>
+                                    <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                    <?php foreach($model as $row): ?>
+                                        <td><?= $row->name ?></td>
+                                        <td><?= $row->label ?></td>
+                                        <td>Rp. <?= number_format($row->price,0,',','.') ?></td>
+                                        <td><?= $row->discount ?> %</td>
+                                        <td><?= date('d/m/Y',strtotime($row->created_at)) ?></td>
+                                        <td>
+                                            <a href="<?= base_url('petugas/souvenir/edit/'.$row->id) ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                            <a href="<?= base_url('petugas/souvenir/view/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </a>
+                                            <a href="<?= base_url('petugas/souvenir/gallery/'.$row->id) ?>" class="btn btn-warning btn-xs"><i class="fa fa-image"></i> Gallery </a>
+                                        </td>
+                                    <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -43,6 +55,7 @@
                                     <th>Category</th>
                                     <th>Price</th>
                                     <th>Discount</th>
+                                    <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
