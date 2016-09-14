@@ -48,5 +48,29 @@ class Souvenir extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('categoryModel');
         $this->load->model('productModel');
+        $this->load->model('productDetailModel');
+
+        $model = $this->productModel->find($id)->result()[0];
+        $detailProduct = $this->productDetailModel->findByProduct($model->id)->result();
+        $category = $this->categoryModel->getAll()->result();
+
+        if($this->input->post('name')){
+            $this->productModel->edit($model);
+            $this->productDetailModel->edit($model->id);
+            $this->session->set_flashdata('success', 'Souvenir has been succesfully updated!');
+            redirect('petugas/souvenir/manage');
+        }
+
+        $this->load->view('backend/petugas/souvenir_edit',[
+            'script'=>'backend/petugas/page_script/souvenir_form',
+            'category'=>$category,
+            'model'=>$model,
+            'detailProduct'=>$detailProduct
+        ]);
+    }
+
+    public function gallery()
+    {
+        //TODO upload image for souvenir
     }
 }
