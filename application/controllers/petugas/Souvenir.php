@@ -69,8 +69,18 @@ class Souvenir extends CI_Controller
         ]);
     }
 
-    public function gallery()
+    public function gallery($id)
     {
-        //TODO upload image for souvenir
+        $this->load->view('backend/petugas/souvenir_gallery',[
+            'script'=>'backend/petugas/page_script/souvenir_form',
+            'id'=>$id
+        ]);
+    }
+    public function creategallery($id)
+    {
+        $this->load->library('form_validation');
+        $this->load->view('backend/petugas/souvenir_creategallery',[
+            'script'=>'backend/petugas/page_script/souvenir_form'
+        ]);
     }
 }
