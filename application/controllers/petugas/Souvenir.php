@@ -78,9 +78,41 @@ class Souvenir extends CI_Controller
     }
     public function creategallery($id)
     {
+        error_reporting(E_ALL);
         $this->load->library('form_validation');
-        $this->load->view('backend/petugas/souvenir_creategallery',[
-            'script'=>'backend/petugas/page_script/souvenir_form'
-        ]);
+        if(isset($_FILES['photo'])){
+            $path = 'images/product/'.$id;
+            $this->load->model('productImagesModel');
+            if(!is_dir($path)){
+                mkdir($path);
+            }
+            $config['upload_path']          = $path;
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 2048;
+            $config['encrypt_name']         = TRUE;
+
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('photo')){
+                $photo = $this->upload->data('file_name');
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $path.'/'.$photo;
+                $config['new_image'] = $path.'/mini_'.$photo;
+                $config['maintain_ratio'] = TRUE;
+                $config['width']         = 500;
+                $config['height']       = 500;
+
+                $this->load->library('image_lib', $config);
+
+                $this->image_lib->resize();
+
+                $this->productImagesModel->insert($id,$photo);
+                $this->session->set_flashdata('success', 'Image has been succesfully created!');
+
+            }else{
+                $this->session->set_flashdata('error', 'Failed to upload image!');
+            }
+            redirect('petugas/souvenir/gallery/'.$id);
+        }
+        $this->load->view('backend/petugas/souvenir_creategallery',['script'=>'backend/admin/page_script/petugas_create']);
     }
 }

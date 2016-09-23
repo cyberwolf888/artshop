@@ -10,7 +10,7 @@
             <div class="col-lg-6">
                 <section class="panel">
                     <header class="panel-heading">
-                        Souvenir Detail
+                        Petugas Toko Detail
                     </header>
                     <div class="panel-body">
                         <div class="fileupload fileupload-new" data-provides="fileupload"><input type="hidden">
