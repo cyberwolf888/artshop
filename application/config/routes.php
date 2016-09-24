@@ -58,6 +58,7 @@ $route['login'] = 'frontend/login';
 $route['register'] = 'frontend/register';
 $route['product/(:any)'] = 'frontend/product/$1';
 $route['category/(:any)'] = 'frontend/category/$1';
+$route['hotitem'] = 'frontend/hotitem';
 $route['cart'] = 'frontend/cart';
 $route['checkout'] = 'frontend/checkout';
 $route['faq'] = 'frontend/faq';

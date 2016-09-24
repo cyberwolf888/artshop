@@ -37,6 +37,7 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach($model as $row): ?>
+                                        <tr>
                                         <td><?= $row->name ?></td>
                                         <td><?= $row->label ?></td>
                                         <td>Rp. <?= number_format($row->price,0,',','.') ?></td>
@@ -44,9 +45,10 @@
                                         <td><?= date('d/m/Y',strtotime($row->created_at)) ?></td>
                                         <td>
                                             <a href="<?= base_url('petugas/souvenir/edit/'.$row->id) ?>" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                            <a href="<?= base_url('petugas/souvenir/view/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </a>
                                             <a href="<?= base_url('petugas/souvenir/gallery/'.$row->id) ?>" class="btn btn-warning btn-xs"><i class="fa fa-image"></i> Gallery </a>
+                                            <a href="<?= base_url('petugas/souvenir/view/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </a>
                                         </td>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                                 <tfoot>

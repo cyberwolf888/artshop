@@ -11,4 +11,27 @@ class ProductImagesModel extends CI_Model
         $this->image = $image;
         $this->db->insert('product_images', $this);
     }
+
+    public function getAll($product_id)
+    {
+        $this->db->select('*');
+        $this->db->from('product_images');
+        $this->db->where('product_id', $product_id);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function getOne($id)
+    {
+        $this->db->select('*');
+        $this->db->from('product_images');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function delete($id)
+    {
+        $this->db->delete('product_images', array('id' => $id));
+    }
 }

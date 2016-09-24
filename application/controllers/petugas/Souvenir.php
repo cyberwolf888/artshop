@@ -69,13 +69,40 @@ class Souvenir extends CI_Controller
         ]);
     }
 
-    public function gallery($id)
+    public function view($id)
     {
-        $this->load->view('backend/petugas/souvenir_gallery',[
+        $this->load->library('form_validation');
+        $this->load->model('categoryModel');
+        $this->load->model('productModel');
+        $this->load->model('productDetailModel');
+        $this->load->model('productImagesModel');
+
+        $model = $this->productModel->find($id)->result()[0];
+        $detailProduct = $this->productDetailModel->findByProduct($model->id)->result();
+        $category = $this->categoryModel->getAll()->result();
+        $images = $this->productImagesModel->getAll($id)->result();
+
+        $this->load->view('backend/petugas/souvenir_view',[
             'script'=>'backend/petugas/page_script/souvenir_form',
-            'id'=>$id
+            'category'=>$category,
+            'model'=>$model,
+            'detailProduct'=>$detailProduct,
+            'images'=>$images
         ]);
     }
+
+    public function gallery($id)
+    {
+        $this->load->model('productImagesModel');
+        $model = $this->productImagesModel->getAll($id)->result();
+
+        $this->load->view('backend/petugas/souvenir_gallery',[
+            'script'=>'backend/petugas/page_script/souvenir_form',
+            'id'=>$id,
+            'model'=>$model
+        ]);
+    }
+
     public function creategallery($id)
     {
         error_reporting(E_ALL);
@@ -97,7 +124,7 @@ class Souvenir extends CI_Controller
                 $config['image_library'] = 'gd2';
                 $config['source_image'] = $path.'/'.$photo;
                 $config['new_image'] = $path.'/mini_'.$photo;
-                $config['maintain_ratio'] = TRUE;
+                $config['maintain_ratio'] = FALSE;
                 $config['width']         = 500;
                 $config['height']       = 500;
 
@@ -115,4 +142,22 @@ class Souvenir extends CI_Controller
         }
         $this->load->view('backend/petugas/souvenir_creategallery',['script'=>'backend/admin/page_script/petugas_create']);
     }
+
+    public function deletegallery($id)
+    {
+        $this->load->model('productImagesModel');
+
+        $model = $this->productImagesModel->getOne($id)->result()[0];
+
+        $image = 'images/product/'.$model->product_id.'/'.$model->image;
+        $thumbnail = 'images/product/'.$model->product_id.'/mini_'.$model->image;
+        if(file_exists($image)){
+            unlink($image);
+            unlink($thumbnail);
+        }
+        $this->productImagesModel->delete($id);
+        $this->session->set_flashdata('success','Image has been deleted!');
+        redirect('petugas/souvenir/gallery/'.$model->product_id);
+    }
+
 }

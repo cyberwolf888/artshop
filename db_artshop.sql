@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 08 Sep 2016 pada 09.36
+-- Generation Time: 24 Sep 2016 pada 12.00
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -57,6 +57,14 @@ CREATE TABLE `categories` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `categories`
+--
+
+INSERT INTO `categories` (`id`, `label`, `created_at`, `updated_at`) VALUES
+(1, 'Nackles', '2016-09-13 03:05:28', '2016-09-13 03:05:43'),
+(2, 'Ring', '2016-09-13 03:05:35', NULL);
 
 -- --------------------------------------------------------
 
@@ -132,7 +140,7 @@ CREATE TABLE `petugas_toko` (
 --
 
 INSERT INTO `petugas_toko` (`id`, `users_id`, `fullname`, `no_hp`, `alamat`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Petugas Toko', '08573474847', 'Jalan Nangka Utara', '1c034ca8da90cbecb386457540368af0.jpg', '2016-09-05 13:08:24', NULL),
+(1, 2, 'Petugas Toko', '08573474847', 'Jalan Nangka Utara', NULL, '2016-09-05 13:08:24', '2016-09-10 03:23:45'),
 (2, 6, 'Petugas Wijaya', '082247464196', 'Jalan Wisnu Marga Belayu No 19', NULL, '2016-09-04 14:05:25', NULL),
 (3, 7, 'Petugas Edukasi', '082247464196', 'Jalan Raya Panjer', NULL, '2016-09-04 14:06:14', NULL),
 (4, 8, 'Ganda Edukasi', '23123123', 'Jalan P. Misol No.66', '20dd6b408bb425e6c9f0c5b5c6f9b844.png', '2016-09-04 14:20:58', NULL),
@@ -162,6 +170,15 @@ CREATE TABLE `product` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `product`
+--
+
+INSERT INTO `product` (`id`, `categories_id`, `name`, `description`, `price`, `discount`, `isSale`, `isHot`, `isAvailable`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Gelang Sakti', 'Gelang paling sakti di muka bumi', 500000, 0, '1', '1', '1', '2016-09-13 08:20:42', '2016-09-14 05:25:55'),
+(2, 1, 'Gendi Bedebah', 'Gendi yang memiliki kekuatan gaib', 1200000, 10, '0', '1', '1', '2016-09-24 03:28:06', NULL),
+(3, 1, 'Kalung Sakti', 'Kalung paling saktu yang ada dimuka bumi', 4000000, 0, NULL, NULL, '1', '2016-09-24 07:58:28', '2016-09-24 07:59:34');
+
 -- --------------------------------------------------------
 
 --
@@ -176,6 +193,47 @@ CREATE TABLE `product_detail` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `product_detail`
+--
+
+INSERT INTO `product_detail` (`id`, `product_id`, `label`, `value`, `created_at`, `updated_at`) VALUES
+(6, 1, 'Color', 'Red', '2016-09-14 05:25:55', NULL),
+(7, 1, 'Weight', '12 Kg', '2016-09-14 05:25:55', NULL),
+(8, 1, 'Dimensions', '5cm x 5cm x 5cm', '2016-09-14 05:25:55', NULL),
+(9, 2, 'Color', 'Hitam', '2016-09-24 03:28:06', NULL),
+(10, 2, 'Weight', '12 kg', '2016-09-24 03:28:06', NULL),
+(11, 2, 'Dimensions', '12m x 12m x 12m', '2016-09-24 03:28:06', NULL),
+(12, 2, 'Size', '23', '2016-09-24 03:28:06', NULL),
+(17, 3, 'Color', 'Red', '2016-09-24 07:59:34', NULL),
+(18, 3, 'Weight', '2 kg', '2016-09-24 07:59:34', NULL),
+(19, 3, 'Dimensions', '12 x 12', '2016-09-24 07:59:34', NULL),
+(20, 3, 'Size', '33', '2016-09-24 07:59:34', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `product_images`
+--
+
+CREATE TABLE `product_images` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `image` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `product_images`
+--
+
+INSERT INTO `product_images` (`id`, `product_id`, `image`) VALUES
+(9, 2, '64a8e62b01b9b2fea81dc1167a28de19.png'),
+(10, 2, 'b2ab392f0a21e8a6d0c5c7e71cc010b9.jpg'),
+(11, 1, 'a45e953bf7dda64e68a4234f4b101bd0.jpg'),
+(12, 1, 'd59080e48d10de7618a9a94f074f3306.jpg'),
+(13, 3, 'e09db8965aa3c2a8a718da3a1f91e483.jpg'),
+(14, 3, 'e44ca608dedce37cd1a6557c99e36fd0.jpg');
 
 -- --------------------------------------------------------
 
@@ -200,7 +258,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `created_at`, `updated_at`) VALUES
 (1, 'member@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '1', '1', NULL, '2016-08-27 10:15:28', '2016-09-08 07:23:12'),
-(2, 'petugas@mail.com', '9da4185ea55998eb7846745fd0ced59e', '2', '2', NULL, '2016-08-27 16:20:19', NULL),
+(2, 'petugas@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-08-27 16:20:19', '2016-09-10 03:23:45'),
 (3, 'pengerajin@mail.com', '8ed358a7da3cc760364909d4aaf7321e', '1', '3', NULL, '2016-08-27 16:21:56', '2016-09-06 13:49:46'),
 (4, 'admin@mail.com', '0b77520f93de693bdab0060746e38165', '1', '4', NULL, '2016-08-27 16:25:43', NULL),
 (5, 'petugas2@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-09-04 13:47:53', NULL),
@@ -261,6 +319,12 @@ ALTER TABLE `product_detail`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -279,7 +343,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `member`
 --
@@ -299,12 +363,17 @@ ALTER TABLE `petugas_toko`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -8,11 +8,17 @@ class Frontend extends CI_Controller {
         // Call the CI_Model constructor
         parent::__construct();
         $this->load->model('users');
+        $this->load->model('categoryModel');
     }
 
     public function index()
     {
-        $this->load->view('frontend/home',['script'=>'frontend/page_script/home_script']);
+        $this->load->model('productModel');
+        $model = $this->productModel->getLastest(30)->result();
+        $this->load->view('frontend/home',[
+            'script'=>'frontend/page_script/home_script',
+            'model'=>$model
+        ]);
     }
 
     public function login()
@@ -87,12 +93,56 @@ class Frontend extends CI_Controller {
 
     public  function product($id)
     {
-        $this->load->view('frontend/product');
+        $this->load->model('productModel');
+        $this->load->model('productDetailModel');
+        $this->load->model('productImagesModel');
+
+        $model = $this->productModel->find($id)->result()[0];
+        if(!$model){
+            redirect('/');
+        }
+        $detail = $this->productDetailModel->findByProduct($model->id)->result();
+        $images = $this->productImagesModel->getAll($model->id)->result();
+        $category = $this->categoryModel->find($model->categories_id)->result()[0];
+        $related = $this->productModel->getByCategory($category->id,4)->result();
+
+        $this->load->view('frontend/product',[
+            'model'=>$model,
+            'details'=>$detail,
+            'images'=>$images,
+            'category'=>$category,
+            'related'=>$related
+        ]);
     }
 
     public function category($id)
     {
-        $this->load->view('frontend/category');
+        $this->load->model('productModel');
+
+        $category = $this->categoryModel->find($id)->result()[0];
+        if(!$category){
+            redirect('/');
+        }
+        $product = $this->productModel->getByCategory($category->id);
+
+        $this->load->view('frontend/category',[
+            'category'=>$category,
+            'product'=>$product->result(),
+            'qproduct'=>$product
+        ]);
+    }
+
+    public function hotitem()
+    {
+        $this->load->model('productModel');
+
+        $product = $this->productModel->getHotItem();
+
+        //die(var_dump($product->result()));
+        $this->load->view('frontend/hotitem',[
+            'product'=>$product->result(),
+            'qproduct'=>$product
+        ]);
     }
 
     public function cart()

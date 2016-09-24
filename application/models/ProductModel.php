@@ -43,6 +43,7 @@ class ProductModel extends CI_Model
         $this->db->select('*');
         $this->db->from('product');
         $this->db->where('id', $id);
+        $this->db->where('product.isAvailable','1');
         $query = $this->db->get();
         return $query;
     }
@@ -61,5 +62,47 @@ class ProductModel extends CI_Model
         $this->updated_at = date("Y-m-d H:i:s");
         $this->db->where('id', $model->id);
         $this->db->update('product', $this);
+    }
+
+    public function getLastest($limit = 20)
+    {
+        $this->db->select('product.*,categories.label,product_images.image');
+        $this->db->from('product');
+        $this->db->join('categories', 'categories.id = product.categories_id');
+        $this->db->join('product_images', 'product_images.product_id = product.id');
+        $this->db->where('product.isAvailable','1');
+        $this->db->group_by('id');
+        $this->db->limit($limit);
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function getByCategory($category_id,$limit=0)
+    {
+        $this->db->select('product.*,categories.label,product_images.image');
+        $this->db->from('product');
+        $this->db->join('categories', 'categories.id = product.categories_id');
+        $this->db->join('product_images', 'product_images.product_id = product.id');
+        $this->db->where('product.categories_id',$category_id);
+        $this->db->where('product.isAvailable','1');
+        if($limit>0){
+            $this->db->limit($limit);
+        }
+        $this->db->group_by('id');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function getHotItem()
+    {
+        $this->db->select('product.*,categories.label,product_images.image');
+        $this->db->from('product');
+        $this->db->join('categories', 'categories.id = product.categories_id');
+        $this->db->join('product_images', 'product_images.product_id = product.id');
+        $this->db->where('product.isHot','1');
+        $this->db->where('product.isAvailable','1');
+        $this->db->group_by('id');
+        $query = $this->db->get();
+        return $query;
     }
 }

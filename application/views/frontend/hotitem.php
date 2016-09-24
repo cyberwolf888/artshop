@@ -12,8 +12,8 @@
 
         <div class="row">
             <div class="col-md-6">
-                <h1 class="mb-none"><strong><?= $category->label ?></strong></h1>
-				<p>Showing 1–12 of <?= $qproduct->num_rows() ?> results.</p>
+                <h1 class="mb-none"><strong>HOT Item</strong></h1>
+                <p>Showing 1–12 of <?= $qproduct->num_rows() ?> results.</p>
             </div>
         </div>
 

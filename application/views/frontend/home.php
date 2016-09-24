@@ -257,306 +257,37 @@
         <div class="row">
 
             <ul class="products product-thumb-info-list" data-plugin-masonry>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-                    <a href="<?= base_url('/product/1') ?>">
-                        <span class="onsale">Sale!</span>
-                    </a>
-                    <span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-1.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Photo Camera</h4>
-											<span class="price">
-												<del><span class="amount">$325</span></del>
-												<ins><span class="amount">$299</span></ins>
-											</span>
-										</a>
+				<?php foreach ($model as $row): ?>
+					<li class="col-md-3 col-sm-6 col-xs-12 product">
+						<?php if($row->isSale == "1"): ?>
+							<a href="<?= base_url('/product/'.$row->id) ?>">
+								<span class="onsale">Sale!</span>
+							</a>
+						<?php endif; ?>
+						<span class="product-thumb-info">
+							<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
+								<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
+							</a>
+							<a href="<?= base_url('/product/'.$row->id) ?>">
+								<span class="product-thumb-info-image">
+									<span class="product-thumb-info-act">
+										<span class="product-thumb-info-act-left"><em>View</em></span>
+										<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
 									</span>
+									<img alt="" class="img-responsive" src="<?= base_url('images/product/'.$row->id.'/mini_'.$row->image) ?>">
 								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-2.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Golf Bag</h4>
-											<span class="price">
-												<span class="amount">$72</span>
-											</span>
-										</a>
+							</a>
+							<span class="product-thumb-info-content">
+								<a href="<?= base_url('/product/'.$row->id) ?>">
+									<h4><?= $row->name ?></h4>
+									<span class="price">
+										<span class="amount">RP. <?= number_format($row->price, 0, ',','.') ?></span>
 									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-3.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Workout</h4>
-											<span class="price">
-												<span class="amount">$60</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-4.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Luxury bag</h4>
-											<span class="price">
-												<span class="amount">$199</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-5.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Ladies' handbag</h4>
-											<span class="price">
-												<span class="amount">$189</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-                    <a href="<?= base_url('/product/1') ?>">
-                        <span class="onsale">Sale!</span>
-                    </a>
-                    <span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-6.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Baseball Cap</h4>
-											<span class="price">
-												<del><span class="amount">$25</span></del>
-												<ins><span class="amount">$22</span></ins>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-7.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Blue Ladies Handbag</h4>
-											<span class="price">
-												<span class="amount">$290</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-8.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Military Rucksack</h4>
-											<span class="price">
-												<span class="amount">$49</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-                    <a href="<?= base_url('/product/1') ?>">
-                        <span class="onsale">Sale!</span>
-                    </a>
-                    <span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-9.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Baseball</h4>
-											<span class="price">
-												<del><span class="amount">$15</span></del>
-												<ins><span class="amount">$12</span></ins>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-10.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Travel bag</h4>
-											<span class="price">
-												<span class="amount">$78</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-11.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Pair of Ice Skates</h4>
-											<span class="price">
-												<span class="amount">$220</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
-                <li class="col-md-3 col-sm-6 col-xs-12 product">
-								<span class="product-thumb-info">
-									<a href="<?= base_url('cart') ?>" class="add-to-cart-product">
-										<span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-									</a>
-									<a href="<?= base_url('/product/1') ?>">
-										<span class="product-thumb-info-image">
-											<span class="product-thumb-info-act">
-												<span class="product-thumb-info-act-left"><em>View</em></span>
-												<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-											</span>
-											<img alt="" class="img-responsive" src="<?= base_url() ?>frontend/assets/img/products/product-12.jpg">
-										</span>
-									</a>
-									<span class="product-thumb-info-content">
-										<a href="<?= base_url('/product/1') ?>">
-											<h4>Sun Glasses</h4>
-											<span class="price">
-												<span class="amount">$129</span>
-											</span>
-										</a>
-									</span>
-								</span>
-                </li>
+								</a>
+							</span>
+						</span>
+					</li>
+				<?php endforeach; ?>
             </ul>
 
         </div>
