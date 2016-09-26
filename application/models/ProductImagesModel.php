@@ -30,6 +30,16 @@ class ProductImagesModel extends CI_Model
         return $query;
     }
 
+    public function getOneByProduct($id)
+    {
+        $this->db->select('*');
+        $this->db->from('product_images');
+        $this->db->where('product_id', $id);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function delete($id)
     {
         $this->db->delete('product_images', array('id' => $id));

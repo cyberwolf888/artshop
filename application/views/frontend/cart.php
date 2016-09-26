@@ -1,5 +1,9 @@
 <?php  $this->load->view('frontend/header1');  ?>
-
+<style>
+    .shop table.cart .product-name {
+        width: 50% !important;
+    }
+</style>
 <div role="main" class="main shop">
 
     <div class="container">
@@ -43,6 +47,8 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            <?php foreach ($this->cart->contents() as $row): ?>
+                                            <?php $image = $this->productImagesModel->getOneByProduct($row['id'])->result()[0]; ?>
                                             <tr class="cart_table_item">
                                                 <td class="product-remove">
                                                     <a title="Remove this item" class="remove" href="#">
@@ -50,89 +56,30 @@
                                                     </a>
                                                 </td>
                                                 <td class="product-thumbnail">
-                                                    <a href="shop-product-sidebar.html">
-                                                        <img width="100" height="100" alt="" class="img-responsive" src="img/products/product-1.jpg">
+                                                    <a href="<?= base_url('product/'.$row['id']) ?>">
+                                                        <img width="100" height="100" alt="" class="img-responsive" src="<?= base_url('images/product/'.$row['id'].'/mini_'.$image->image) ?>">
                                                     </a>
                                                 </td>
                                                 <td class="product-name">
-                                                    <a href="shop-product-sidebar.html">Photo Camera</a>
+                                                    <a href="<?= base_url('product/'.$row['id']) ?>"><?= $row['name'] ?></a>
                                                 </td>
                                                 <td class="product-price">
-                                                    <span class="amount">$299</span>
+                                                    <span class="amount">Rp. <?= number_format($row['price'],0,',','.') ?></span>
                                                 </td>
                                                 <td class="product-quantity">
                                                     <form enctype="multipart/form-data" method="post" class="cart">
                                                         <div class="quantity">
                                                             <input type="button" class="minus" value="-">
-                                                            <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                                            <input type="text" class="input-text qty text" title="Qty" value="<?= $row['qty'] ?>" name="quantity" min="1" step="1">
                                                             <input type="button" class="plus" value="+">
                                                         </div>
                                                     </form>
                                                 </td>
                                                 <td class="product-subtotal">
-                                                    <span class="amount">$299</span>
+                                                    <span class="amount">Rp. <?= number_format($row['price']*$row['qty'],0,',','.') ?></span>
                                                 </td>
                                             </tr>
-                                            <tr class="cart_table_item">
-                                                <td class="product-remove">
-                                                    <a title="Remove this item" class="remove" href="#">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </td>
-                                                <td class="product-thumbnail">
-                                                    <a href="shop-product-sidebar.html">
-                                                        <img width="100" height="100" alt="" class="img-responsive" src="img/products/product-2.jpg">
-                                                    </a>
-                                                </td>
-                                                <td class="product-name">
-                                                    <a href="shop-product-sidebar.html">Golf Bag</a>
-                                                </td>
-                                                <td class="product-price">
-                                                    <span class="amount">$72</span>
-                                                </td>
-                                                <td class="product-quantity">
-                                                    <form enctype="multipart/form-data" method="post" class="cart">
-                                                        <div class="quantity">
-                                                            <input type="button" class="minus" value="-">
-                                                            <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                                            <input type="button" class="plus" value="+">
-                                                        </div>
-                                                    </form>
-                                                </td>
-                                                <td class="product-subtotal">
-                                                    <span class="amount">$72</span>
-                                                </td>
-                                            </tr>
-                                            <tr class="cart_table_item">
-                                                <td class="product-remove">
-                                                    <a title="Remove this item" class="remove" href="#">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </td>
-                                                <td class="product-thumbnail">
-                                                    <a href="shop-product-sidebar.html">
-                                                        <img width="100" height="100" alt="" class="img-responsive" src="img/products/product-3.jpg">
-                                                    </a>
-                                                </td>
-                                                <td class="product-name">
-                                                    <a href="shop-product-sidebar.html">Workout</a>
-                                                </td>
-                                                <td class="product-price">
-                                                    <span class="amount">$60</span>
-                                                </td>
-                                                <td class="product-quantity">
-                                                    <form enctype="multipart/form-data" method="post" class="cart">
-                                                        <div class="quantity">
-                                                            <input type="button" class="minus" value="-">
-                                                            <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                                            <input type="button" class="plus" value="+">
-                                                        </div>
-                                                    </form>
-                                                </td>
-                                                <td class="product-subtotal">
-                                                    <span class="amount">$60</span>
-                                                </td>
-                                            </tr>
+                                            <?php endforeach; ?>
                                             <tr>
                                                 <td class="actions" colspan="6">
                                                     <div class="actions-continue">
@@ -214,7 +161,7 @@
                                                 <strong>Order Total</strong>
                                             </th>
                                             <td>
-                                                <strong><span class="amount">$431</span></strong>
+                                                <strong><span class="amount"><?= $this->cart->total() ?></span></strong>
                                             </td>
                                         </tr>
                                         </tbody>

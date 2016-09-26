@@ -103,7 +103,14 @@ if(isset($script)){
     $this->load->view($script);
 }
 ?>
-
+<script>
+    $(document).ready(function () {
+        $.post('<?= base_url('frontend/getCart') ?>',{})
+        .success(function (data) {
+            $("#cart_item_body").empty().html(data);
+        });
+    })
+</script>
 <!-- Theme Custom -->
 <script src="<?= base_url() ?>frontend/assets/js/custom.js"></script>
 

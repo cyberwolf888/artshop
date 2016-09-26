@@ -44,7 +44,7 @@
                     </li>
                     <li class="dropdown dropdown-mega dropdown-mega-shop" id="headerShop">
                         <a class="dropdown-toggle" href="page-login.html">
-                            <i class="fa fa-user"></i> Cart (<span id="cart_total_item">1</span>)
+                            <i class="fa fa-user"></i> Cart (<span id="cart_total_item"><?= $this->cart->total_items() ?></span>)
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -59,11 +59,6 @@
                                             </td>
                                             <td class="product-name">
                                                 <a href="shop-product-sidebar.html">Photo Camera<br><span class="amount"><strong>$299</strong></span></a>
-                                            </td>
-                                            <td class="product-actions">
-                                                <a title="Remove this item" class="remove" href="#">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
                                             </td>
                                         </tr>
 

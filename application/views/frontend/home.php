@@ -280,9 +280,16 @@
 							<span class="product-thumb-info-content">
 								<a href="<?= base_url('/product/'.$row->id) ?>">
 									<h4><?= $row->name ?></h4>
+                                    <?php if($row->discount>0): ?>
+                                    <span class="price">
+                                        <del><span class="amount">RP. <?= number_format($row->price, 0, ',','.') ?></span></del>
+                                        <ins><span class="amount">RP. <?= number_format($row->price-($row->price*$row->discount/100), 0, ',','.') ?></span></ins>
+                                    </span>
+                                    <?php else: ?>
 									<span class="price">
 										<span class="amount">RP. <?= number_format($row->price, 0, ',','.') ?></span>
 									</span>
+                                    <?php endif; ?>
 								</a>
 							</span>
 						</span>

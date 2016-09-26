@@ -45,14 +45,15 @@
 
                     <p class="taller"><?= $model->description ?> </p>
 
-                    <form enctype="multipart/form-data" method="post" class="cart">
+                    <!-- <form enctype="multipart/form-data" method="post" class="cart"> -->
                         <div class="quantity">
-                            <input type="button" class="minus" value="-">
-                            <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                            <input type="button" class="plus" value="+">
+                            <input id="min_qty" type="button" class="minus" value="-">
+                            <input id="qty_cart" type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1" readonly>
+                            <input id="add_qty" type="button" class="plus" value="+">
+                            <input id="product_id" type="hidden" value="<?= $model->id ?>">
                         </div>
-                        <button href="#" class="btn btn-primary btn-icon">Add to cart</button>
-                    </form>
+                        <button class="btn btn-primary btn-icon" id="add_cart">Add to cart</button>
+                    <!-- </form> -->
 
                     <div class="product_meta">
                         <span class="posted_in">Categories: <a rel="tag" href="<?= base_url('category/'.$category->id) ?>"><?= $category->label ?></a>.</span>
@@ -130,9 +131,16 @@
                                         <span class="product-thumb-info-content">
                                             <a href="<?= base_url('/product/'.$row->id) ?>">
                                                 <h4><?= $row->name ?></h4>
-                                                <span class="price">
-                                                    <span class="amount">RP. <?= number_format($row->price, 0, ',','.') ?></span>
-                                                </span>
+                                                <?php if($row->discount>0): ?>
+                                                    <span class="price">
+                                                        <del><span class="amount">RP. <?= number_format($row->price, 0, ',','.') ?></span></del>
+                                                        <ins><span class="amount">RP. <?= number_format($row->price-($row->price*$row->discount/100), 0, ',','.') ?></span></ins>
+                                                    </span>
+                                                <?php else: ?>
+                                                    <span class="price">
+                                                        <span class="amount">RP. <?= number_format($row->price, 0, ',','.') ?></span>
+                                                    </span>
+                                                <?php endif; ?>
                                             </a>
                                         </span>
                                     </span>

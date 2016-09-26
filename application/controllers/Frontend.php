@@ -9,6 +9,7 @@ class Frontend extends CI_Controller {
         parent::__construct();
         $this->load->model('users');
         $this->load->model('categoryModel');
+        $this->load->library('cart');
     }
 
     public function index()
@@ -93,6 +94,7 @@ class Frontend extends CI_Controller {
 
     public  function product($id)
     {
+        //die(print_r($this->cart->contents()));
         $this->load->model('productModel');
         $this->load->model('productDetailModel');
         $this->load->model('productImagesModel');
@@ -107,6 +109,7 @@ class Frontend extends CI_Controller {
         $related = $this->productModel->getByCategory($category->id,4)->result();
 
         $this->load->view('frontend/product',[
+            'script'=>'frontend/page_script/product_script',
             'model'=>$model,
             'details'=>$detail,
             'images'=>$images,
@@ -147,6 +150,7 @@ class Frontend extends CI_Controller {
 
     public function cart()
     {
+        $this->load->model('productImagesModel');
         $this->load->view('frontend/cart');
     }
 
@@ -179,6 +183,67 @@ class Frontend extends CI_Controller {
     {
         $this->users->logout();
         redirect('/');
+    }
+
+    public function addCart()
+    {
+        if(isset($_POST['product_id'])){
+            $this->load->model('productModel');
+            $this->load->model('productImagesModel');
+
+            $product_id = $_POST['product_id'];
+            $qty = 1;
+            if(isset($_POST['qty'])){
+                $qty = $_POST['qty'];
+            }
+
+            $model = $this->productModel->find($product_id)->result();
+
+            if($model){
+                $model = $model[0];
+                $price = $model->price;
+                if($model->discount>0){
+                    $price = $price - ($price*$model->discount/100);
+                }
+                $data = array(
+                    'id'      => $product_id,
+                    'qty'     => $qty,
+                    'price'   => $price,
+                    'name'    => $model->name,
+                );
+
+                if($this->cart->insert($data)){
+                    $image = $this->productImagesModel->getOneByProduct($product_id)->result()[0];
+                    $response = ['status'=>1,'total_item'=>$this->cart->total_items(),'name'=>$model->name,'price'=>$price,'image'=>$image->image];
+                    echo json_encode($response);
+                }else{
+                    echo json_encode(['status'=>0]);
+                }
+            }
+
+        }
+    }
+
+    public function getCart()
+    {
+        $this->load->model('productImagesModel');
+        foreach ($this->cart->contents() as $key=>$row){
+
+            $image = $this->productImagesModel->getOneByProduct($row['id'])->result()[0];
+
+            echo '<tr>
+                <td class="product-thumbnail">
+                    <a href="'.base_url('product/'.$row['id']).'">
+                        <img width="100" height="100" alt="" class="img-responsive" src="'.base_url('images/product/'.$row['id'].'/mini_'.$image->image) .'">
+                    </a>
+                </td>
+                <td class="product-name">
+                    <a href="'.base_url('product/'.$row['id']).'">'.$row['name'].'<br><span class="amount"><strong>Rp '.number_format($row['price'],0,',','.').'</strong></span></a>
+                </td>
+            </tr>';
+
+
+        }
     }
 
 }
