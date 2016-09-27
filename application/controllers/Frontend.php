@@ -151,11 +151,17 @@ class Frontend extends CI_Controller {
     public function cart()
     {
         $this->load->model('productImagesModel');
-        $this->load->view('frontend/cart');
+        $this->load->view('frontend/cart',[
+            'script'=>'frontend/page_script/cart_script',
+        ]);
     }
 
     public function checkout()
     {
+        $this->load->model('productImagesModel');
+        if($this->cart->total_items()==0){
+            redirect(base_url('/'));
+        }
         $this->load->view('frontend/checkout');
     }
 
@@ -222,6 +228,25 @@ class Frontend extends CI_Controller {
             }
 
         }
+    }
+
+    public function updateCart()
+    {
+        $rowid = $_POST['rowid'];
+        $qty = $_POST['qty'];
+
+        $data = array(
+            'rowid' => $rowid,
+            'qty'   => $qty
+        );
+
+        $this->cart->update($data);
+    }
+
+    public function delCart($id)
+    {
+       $this->cart->remove($id);
+        redirect(base_url('cart'));
     }
 
     public function getCart()

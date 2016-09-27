@@ -47,11 +47,11 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php foreach ($this->cart->contents() as $row): ?>
+                                            <?php foreach ($this->cart->contents() as $key=>$row): ?>
                                             <?php $image = $this->productImagesModel->getOneByProduct($row['id'])->result()[0]; ?>
                                             <tr class="cart_table_item">
                                                 <td class="product-remove">
-                                                    <a title="Remove this item" class="remove" href="#">
+                                                    <a title="Remove this item" class="remove" href="<?= base_url('frontend/delCart/'.$key) ?>">
                                                         <i class="fa fa-times"></i>
                                                     </a>
                                                 </td>
@@ -69,9 +69,9 @@
                                                 <td class="product-quantity">
                                                     <form enctype="multipart/form-data" method="post" class="cart">
                                                         <div class="quantity">
-                                                            <input type="button" class="minus" value="-">
-                                                            <input type="text" class="input-text qty text" title="Qty" value="<?= $row['qty'] ?>" name="quantity" min="1" step="1">
-                                                            <input type="button" class="plus" value="+">
+                                                            <input type="button" class="minus" value="-" onclick="minQty('<?= $key ?>',1)">
+                                                            <input id="<?= $key ?>" type="text" class="input-text qty text" title="Qty" value="<?= $row['qty'] ?>" name="quantity" min="1" step="1">
+                                                            <input type="button" class="plus" value="+" onclick="addQty('<?= $key ?>',1)">
                                                         </div>
                                                     </form>
                                                 </td>
@@ -98,7 +98,7 @@
 
                 <div class="featured-boxes">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                             <div class="featured-box featured-box-primary align-left mt-xlg">
                                 <div class="box-content">
                                     <h4 class="heading-primary text-uppercase mb-md">Calculate Shipping</h4>
@@ -106,10 +106,8 @@
                                         <div class="row">
                                             <div class="form-group">
                                                 <div class="col-md-12">
-                                                    <label>Country</label>
-                                                    <select class="form-control">
-                                                        <option value="">Select a country</option>
-                                                    </select>
+                                                    <label>Address</label>
+                                                    <input name="address" type="text" value="" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -117,11 +115,11 @@
                                             <div class="form-group">
                                                 <div class="col-md-6">
                                                     <label>State</label>
-                                                    <input type="text" value="" class="form-control">
+                                                    <input name="state" type="text" value="" class="form-control">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Zip Code</label>
-                                                    <input type="text" value="" class="form-control">
+                                                    <input name="zipcode" type="text" value="" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -133,8 +131,8 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
+                        </div> -->
+                        <div class="col-sm-12">
                             <div class="featured-box featured-box-primary align-left mt-xlg">
                                 <div class="box-content">
                                     <h4 class="heading-primary text-uppercase mb-md">Cart Totals</h4>
@@ -145,7 +143,7 @@
                                                 <strong>Cart Subtotal</strong>
                                             </th>
                                             <td>
-                                                <strong><span class="amount">$431</span></strong>
+                                                <strong><span class="amount"></span>Rp. <?= number_format($this->cart->total(),0,',','.') ?></strong>
                                             </td>
                                         </tr>
                                         <tr class="shipping">
@@ -161,7 +159,7 @@
                                                 <strong>Order Total</strong>
                                             </th>
                                             <td>
-                                                <strong><span class="amount"><?= $this->cart->total() ?></span></strong>
+                                                <strong><span class="amount">Rp. <?= number_format($this->cart->total(),0,',','.') ?></span></strong>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -176,7 +174,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="actions-continue">
-                            <button type="submit" class="btn pull-right btn-primary btn-lg">Proceed to Checkout <i class="fa fa-angle-right ml-xs"></i></button>
+                            <a href="<?= base_url('checkout') ?>" class="btn pull-right btn-primary btn-lg">Proceed to Checkout <i class="fa fa-angle-right ml-xs"></i></a>
                         </div>
                     </div>
                 </div>

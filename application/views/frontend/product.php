@@ -40,7 +40,12 @@
                     </div>
                     -->
                     <p class="price">
-                        <span class="amount">Rp. <?= number_format($model->price,0,',','.') ?></span>
+                        <?php if($model->discount>0): ?>
+                            <del><span class="amount" style="color: lightgrey;">RP. <?= number_format($model->price, 0, ',','.') ?></span></del>
+                            <span class="amount">Rp. <?= number_format($model->price-($model->price*$model->discount/100),0,',','.') ?></span>
+                        <?php else: ?>
+                            <span class="amount">Rp. <?= number_format($model->price,0,',','.') ?></span>
+                        <?php endif; ?>
                     </p>
 
                     <p class="taller"><?= $model->description ?> </p>
