@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 24 Sep 2016 pada 12.00
--- Versi Server: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Host: 127.0.0.1
+-- Generation Time: 28 Sep 2016 pada 18.11
+-- Versi Server: 10.1.13-MariaDB
+-- PHP Version: 7.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -69,6 +69,22 @@ INSERT INTO `categories` (`id`, `label`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `detail_order_member`
+--
+
+CREATE TABLE `detail_order_member` (
+  `id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
+  `product_price` int(11) DEFAULT NULL,
+  `product_detail` text,
+  `product_image` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `member`
 --
 
@@ -91,6 +107,27 @@ CREATE TABLE `member` (
 INSERT INTO `member` (`id`, `users_id`, `fullname`, `alamat`, `no_hp`, `photo`, `kode_pos`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', '2016-09-08 07:23:13'),
 (2, 14, 'Member Wijaya', 'Jalan Wisnu Marga Belayu No 19', '082247464196', NULL, '82181', '2016-09-08 07:04:57', '2016-09-08 07:19:16');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `order_member`
+--
+
+CREATE TABLE `order_member` (
+  `id` int(11) DEFAULT NULL,
+  `member_id` int(11) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `zip_code` char(5) DEFAULT NULL,
+  `note` text,
+  `payment` int(11) DEFAULT NULL,
+  `total` float DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
