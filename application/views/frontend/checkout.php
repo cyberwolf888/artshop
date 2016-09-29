@@ -39,27 +39,31 @@
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <label>Address</label>
-                                                    <input name="address" type="text" value="" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="form-group">
-                                                <div class="col-md-6">
-                                                    <label>First Name</label>
-                                                    <input name="first_name" type="text" value="" class="form-control">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Last Name</label>
-                                                    <input name="last_name" type="text" value="" class="form-control">
+                                                    <input name="address" type="text" value="<?= $member->alamat ?>" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group">
                                                 <div class="col-md-12">
+                                                    <label>Full Name</label>
+                                                    <input name="fullname" type="text" value="<?= $member->fullname ?>" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>No. Handphone</label>
+                                                <input name="no_hp" type="text" value="<?= $member->no_hp ?>" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="col-md-12">
                                                     <label>State</label>
-                                                    <input name="state" type="text" value="" class="form-control">
+                                                    <input name="state" type="text" value="Bali" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,7 +71,7 @@
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <label>Zip Code </label>
-                                                    <input name="zip_code" type="text" value="" class="form-control">
+                                                    <input name="zip_code" type="text" value="<?= $member->kode_pos ?>" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>

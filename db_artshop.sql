@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 28 Sep 2016 pada 18.11
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 7.0.5
+-- Host: localhost
+-- Generation Time: 29 Sep 2016 pada 11.22
+-- Versi Server: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -73,14 +73,24 @@ INSERT INTO `categories` (`id`, `label`, `created_at`, `updated_at`) VALUES
 --
 
 CREATE TABLE `detail_order_member` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
   `product_id` int(11) DEFAULT NULL,
+  `qty` int(11) NOT NULL,
   `product_name` varchar(100) DEFAULT NULL,
-  `product_price` int(11) DEFAULT NULL,
-  `product_detail` text,
-  `product_image` text
+  `product_price` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `detail_order_member`
+--
+
+INSERT INTO `detail_order_member` (`id`, `order_id`, `product_id`, `qty`, `product_name`, `product_price`) VALUES
+(1, 1, 2, 3, 'Gendi Bedebah', 1080000),
+(2, 2, 2, 3, 'Gendi Bedebah', 1080000),
+(3, 3, 1, 1, 'Gelang Sakti', 500000),
+(4, 3, 2, 1, 'Gendi Bedebah', 1080000),
+(5, 4, 2, 3, 'Gendi Bedebah', 1080000);
 
 -- --------------------------------------------------------
 
@@ -105,7 +115,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `users_id`, `fullname`, `alamat`, `no_hp`, `photo`, `kode_pos`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', '2016-09-08 07:23:13'),
+(1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', '2016-09-29 06:38:02'),
 (2, 14, 'Member Wijaya', 'Jalan Wisnu Marga Belayu No 19', '082247464196', NULL, '82181', '2016-09-08 07:04:57', '2016-09-08 07:19:16');
 
 -- --------------------------------------------------------
@@ -115,19 +125,30 @@ INSERT INTO `member` (`id`, `users_id`, `fullname`, `alamat`, `no_hp`, `photo`, 
 --
 
 CREATE TABLE `order_member` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
   `member_id` int(11) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
+  `fullname` varchar(200) DEFAULT NULL,
+  `no_hp` varchar(12) NOT NULL,
   `state` varchar(100) DEFAULT NULL,
   `zip_code` char(5) DEFAULT NULL,
   `note` text,
   `payment` int(11) DEFAULT NULL,
   `total` float DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `order_member`
+--
+
+INSERT INTO `order_member` (`id`, `member_id`, `address`, `fullname`, `no_hp`, `state`, `zip_code`, `note`, `payment`, `total`, `status`, `token`, `created_at`) VALUES
+(1, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', '', 1, 3240000, 1, 'Nr9UViKe', '2016-09-29 07:08:41'),
+(2, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', '', 1, 3240000, 1, '49dwmPSx', '2016-09-29 07:12:36'),
+(3, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'test test stsetsetsesetse ', 1, 1580000, 1, 'ClbMxFs0', '2016-09-29 07:13:31'),
+(4, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'asd asdasdasd asdasd asdasd a', 1, 3240000, 1, 'BlTwbgym', '2016-09-29 07:15:22');
 
 -- --------------------------------------------------------
 
@@ -294,7 +315,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'member@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '1', '1', NULL, '2016-08-27 10:15:28', '2016-09-08 07:23:12'),
+(1, 'member@gmail.com', '0b77520f93de693bdab0060746e38165', '1', '1', NULL, '2016-08-27 10:15:28', '2016-09-29 06:38:02'),
 (2, 'petugas@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-08-27 16:20:19', '2016-09-10 03:23:45'),
 (3, 'pengerajin@mail.com', '8ed358a7da3cc760364909d4aaf7321e', '1', '3', NULL, '2016-08-27 16:21:56', '2016-09-06 13:49:46'),
 (4, 'admin@mail.com', '0b77520f93de693bdab0060746e38165', '1', '4', NULL, '2016-08-27 16:25:43', NULL),
@@ -326,9 +347,21 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `detail_order_member`
+--
+ALTER TABLE `detail_order_member`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_member`
+--
+ALTER TABLE `order_member`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -382,10 +415,20 @@ ALTER TABLE `admin`
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `detail_order_member`
+--
+ALTER TABLE `detail_order_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `order_member`
+--
+ALTER TABLE `order_member`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pengerajin`
 --

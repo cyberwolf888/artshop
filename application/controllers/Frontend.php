@@ -162,7 +162,52 @@ class Frontend extends CI_Controller {
         if($this->cart->total_items()==0){
             redirect(base_url('/'));
         }
-        $this->load->view('frontend/checkout');
+        if($this->users->isLogedIn()==0){
+            redirect(base_url('login'));
+        }
+
+        $member = $this->users->getMember()->result()[0];
+
+        if(isset($_POST['address'])){
+            $this->load->model('orderMemberModel');
+            $this->load->model('detailOrderMemberModel');
+            $total = $this->cart->total();
+            $order_id = $this->orderMemberModel->insert($member->id,$total);
+            foreach ($this->cart->contents() as $cart){
+                $this->detailOrderMemberModel->insert([
+                    'order_id'=>$order_id,
+                    'product_id'=>$cart['id'],
+                    'product_name'=>$cart['name'],
+                    'qty'=>$cart['qty'],
+                    'product_price'=>$cart['price']
+                ]);
+            }
+            $this->cart->destroy();
+            $this->session->set_userdata('order_id', $order_id);
+            redirect('frontend/complete');
+        }
+        $this->load->view('frontend/checkout',[
+            'member'=>$member
+        ]);
+    }
+
+    public function complete()
+    {
+        if($this->session->order_id==null){
+            redirect(base_url('/'));
+        }else{
+            $this->load->model('orderMemberModel');
+            $this->load->model('detailOrderMemberModel');
+
+            $order = $this->orderMemberModel->find($this->session->order_id)->result()[0];
+            $details = $this->detailOrderMemberModel->findByOrder($order->id)->result();
+
+            $this->load->view('frontend/complete',[
+                'script'=>'frontend/page_script/invoice_script',
+                'order'=>$order,
+                'details'=>$details
+            ]);
+        }
     }
 
     public function search()

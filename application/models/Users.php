@@ -107,7 +107,21 @@ class Users extends CI_Model{
     }
 
     public function isLogedIn(){
-        return $this->session->isLogedIn;
+        if($this->session->isLogedIn==""){
+            return 0;
+        }else{
+            return 1;
+        }
+    }
+
+    public function getMember()
+    {
+        $this->db->select('member.*,users.email,users.status,users.type');
+        $this->db->from('member');
+        $this->db->join('users', 'users.id = member.users_id');
+        $this->db->where('member.users_id',$this->session->user_id);
+        $query = $this->db->get();
+        return $query;
     }
 
     public function logout(){
