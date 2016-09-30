@@ -73,7 +73,7 @@ $h_order = $this->orderMemberModel->getNewOrder();
                         </li>
                         <?php foreach ($h_order->result() as $h_result): ?>
                         <li>
-                            <a href="#">
+                            <a href="<?= base_url('petugas/order/detail_member/'.$h_result->id) ?>">
                                 <span class="label label-success"><i class="fa fa-plus"></i></span>
                                 New order from <?= $h_result->fullname ?>
                             </a>

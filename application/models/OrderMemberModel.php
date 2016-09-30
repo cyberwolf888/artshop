@@ -21,7 +21,7 @@ class OrderMemberModel extends CI_Model
     public $token;
     public $created_at;
 
-    //status : 1=>order baru, 2=>proses pengerajin, 3=>dikirim, 4=>complate
+    //status : 0=>canceled, 1=>order baru, 2=>proses pengerajin, 3=>dikirim, 4=>complate
     //payment : 1=>transfer bank, 2=>kartu kredit
 
     public function insert($member_id,$total)
@@ -60,5 +60,26 @@ class OrderMemberModel extends CI_Model
         $this->db->where('status', 1);
         $query = $this->db->get();
         return $query;
+    }
+
+    public function findAll()
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->order_by('id','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function getPayment($id)
+    {
+        $bank = ['1'=>'Transfer Bank','2'=>'Credit Card'];
+        return $bank[$id];
+    }
+
+    public function getStatus($id)
+    {
+        $status = ['0'=>'Canceled','1'=>'New Order','2'=>'Process','3'=>'Shipped','4'=>'Complete'];
+        return $status[$id];
     }
 }
