@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class Order extends CI_Controller
 {
     public function __construct()
     {
@@ -15,8 +15,11 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function index()
+    public function member()
     {
-        $this->load->view('backend/petugas/dashboard',['script'=>'backend/petugas/page_script/dashboard']);
+        $model = $this->orderMemberModel->findAll();
+        $this->load->view('backend/petugas/order_member',[
+
+        ]);
     }
 }

@@ -52,4 +52,13 @@ class OrderMemberModel extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function getNewOrder()
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->where('status', 1);
+        $query = $this->db->get();
+        return $query;
+    }
 }

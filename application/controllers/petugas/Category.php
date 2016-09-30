@@ -9,6 +9,7 @@ class Category extends CI_Controller
         // Call the CI_Model constructor
         parent::__construct();
         $this->load->model('users');
+        $this->load->model('orderMemberModel');
         if($this->session->type != 2){
             redirect('login');
         }
