@@ -19,6 +19,7 @@ class Order extends CI_Controller
     {
         $model = $this->orderMemberModel->findAll()->result();
         $this->load->view('backend/petugas/order_member',[
+            'script'=>'backend/petugas/page_script/petugas_manage',
             'model'=>$model
         ]);
     }
@@ -37,6 +38,42 @@ class Order extends CI_Controller
         $this->load->view('backend/petugas/order_detail_member',[
             'order'=>$order,
             'detail'=>$detail
+        ]);
+    }
+
+    public function process_order_member($id)
+    {
+        $this->load->model('pengerajinModel');
+        $this->load->model('orderPengerajinModel');
+        $pengerajin = $this->pengerajinModel->getAll()->result();
+        if(isset($_POST['order_id'])){
+            $this->orderPengerajinModel->insert();
+            $update = $this->orderMemberModel->update($id,['status'=>'2']);
+            if($update){
+                redirect('petugas/order/member');
+            }
+        }
+        $this->load->view('backend/petugas/order_process_member',[
+            'order_id'=>$id,
+            'pengerajin'=>$pengerajin
+        ]);
+    }
+
+    public function cancel_order_member($id)
+    {
+        $update = $this->orderMemberModel->update($id,['status'=>'0']);
+        if($update){
+            redirect('petugas/order/member');
+        }
+    }
+
+    public function pengerajin()
+    {
+        $this->load->model('orderPengerajinModel');
+        $model = $this->orderPengerajinModel->findAll()->result();
+        $this->load->view('backend/petugas/order_pengerajin',[
+            'script'=>'backend/petugas/page_script/petugas_manage',
+            'model'=>$model
         ]);
     }
 }

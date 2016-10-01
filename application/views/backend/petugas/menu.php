@@ -30,7 +30,7 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="<?= base_url('petugas/order/member') ?>">Customer</a></li>
-                    <li><a  href="horizontal_menu.html">Pengerajin</a></li>
+                    <li><a  href="<?= base_url('petugas/order/pengerajin') ?>">Pengerajin</a></li>
                 </ul>
             </li>
 

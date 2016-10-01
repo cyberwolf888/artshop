@@ -37,6 +37,10 @@
                             <label for="discount">Status</label>
                             <input type="text" value="<?= $this->orderMemberModel->getStatus($order->status) ?>" name="status" class="form-control" id="status" disabled>
                         </div>
+                        <div class="form-group">
+                            <label for="discount">Payment Status</label>
+                            <input type="text" value="<?= $this->orderMemberModel->getPaymentStatus($order->payment_status) ?>" name="status" class="form-control" id="status" disabled>
+                        </div>
 
                         <div class="form-group">
                             <label for="description">Note</label>
@@ -72,14 +76,16 @@
                 </section>
             </div>
         </div>
+        <?php if($order->status == 1): ?>
         <div class="row">
             <div class="col-md-2">
-                <a href="<?= base_url('petugas/order/detail_member/'.$row->id) ?>" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Process </a>
+                <a href="<?= base_url('petugas/order/process_order_member/'.$order->id) ?>" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Process Order </a>
             </div>
             <div class="col-md-2">
-                <a href="<?= base_url('petugas/order/detail_member/'.$row->id) ?>" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Cancel </a>
+                <a href="<?= base_url('petugas/order/cancel_order_member/'.$order->id) ?>" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Cancel Order </a>
             </div>
         </div>
+        <?php endif; ?>
     </section>
 </section>
 <?php  $this->load->view('backend/petugas/footer1');  ?>

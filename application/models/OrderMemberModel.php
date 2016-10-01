@@ -18,6 +18,7 @@ class OrderMemberModel extends CI_Model
     public $payment;
     public $total;
     public $status;
+    public $payment_status;
     public $token;
     public $created_at;
 
@@ -36,12 +37,20 @@ class OrderMemberModel extends CI_Model
         $this->payment = 1;
         $this->total = $total;
         $this->status = 1;
+        $this->payment_status = 0;
         $this->token = random_string('alnum', 8);
         $this->created_at = date("Y-m-d H:i:s");
         $this->db->insert('order_member', $this);
         $insert_id = $this->db->insert_id();
 
         return  $insert_id;
+    }
+
+    public function update($id,$data=array())
+    {
+        $this->db->where('id', $id);
+
+        return $this->db->update('order_member',$data);;
     }
 
     public function find($id)
@@ -80,6 +89,12 @@ class OrderMemberModel extends CI_Model
     public function getStatus($id)
     {
         $status = ['0'=>'Canceled','1'=>'New Order','2'=>'Process','3'=>'Shipped','4'=>'Complete'];
+        return $status[$id];
+    }
+
+    public function getPaymentStatus($id)
+    {
+        $status = ['0'=>'Not Paid','1'=>'Paid'];
         return $status[$id];
     }
 }

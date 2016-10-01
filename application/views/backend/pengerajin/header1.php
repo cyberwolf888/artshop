@@ -12,7 +12,7 @@ $h_order = $this->orderMemberModel->getNewOrder();
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="<?= base_url() ?>backend/assets/img/favicon.html">
 
-    <title>Petugas Toko</title>
+    <title>Pengerajin</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url() ?>backend/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@ $h_order = $this->orderMemberModel->getNewOrder();
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="<?= base_url('petugas') ?>" class="logo">Petugas</a>
+        <a href="<?= base_url('pengerajin') ?>" class="logo">Pengerajin</a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
@@ -110,6 +110,6 @@ $h_order = $this->orderMemberModel->getNewOrder();
     </header>
     <!--header end-->
     <!--sidebar start-->
-    <?php $this->load->view('backend/petugas/menu') ?>
+    <?php $this->load->view('backend/pengerajin/menu') ?>
     <!--sidebar end-->
     <!--main content start-->

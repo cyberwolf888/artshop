@@ -42,6 +42,7 @@ class PengerajinModel extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('pengerajin', $this);
     }
+
     public function getAll()
     {
         $this->db->select('pengerajin.*,users.email,users.status AS users_status');

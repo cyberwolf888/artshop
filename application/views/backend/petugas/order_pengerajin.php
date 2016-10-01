@@ -27,9 +27,8 @@
                                 <thead>
                                 <tr>
                                     <td>No</td>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>No. HP</th>
+                                    <th>Customer</th>
+                                    <th>Pengerajin</th>
                                     <th>Total</th>
                                     <th>Payment</th>
                                     <th>Status</th>
@@ -42,22 +41,20 @@
                                     <tr>
                                         <td><?= $no ?></td>
                                         <td><?= $row->fullname ?></td>
-                                        <td><?= $row->address ?></td>
-                                        <td><?= $row->no_hp ?></td>
+                                        <td><?= $row->pengerajin_name ?></td>
                                         <td>Rp <?= number_format($row->total, 0, ',', '.') ?></td>
                                         <td><?= $this->orderMemberModel->getPayment($row->payment) ?></td>
                                         <td><?= $this->orderMemberModel->getStatus($row->status) ?></td>
                                         <td><?= $this->orderMemberModel->getPaymentStatus($row->payment_status) ?></td>
                                         <td><a href="<?= base_url('petugas/order/detail_member/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a></td>
                                     </tr>
-                                <?php $no++;endforeach; ?>
+                                    <?php $no++;endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                 <tr>
                                     <td>No</td>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                    <th>No. HP</th>
+                                    <th>Customer</th>
+                                    <th>Pengerajin</th>
                                     <th>Total</th>
                                     <th>Payment</th>
                                     <th>Status</th>

@@ -76,3 +76,6 @@ $route['admin/member/view/(:any)'] = 'admin/memberController/view/$1';
 
 //Petugas route
 $route['petugas'] = 'petugas/dashboard/index';
+
+//Pengerajin route
+$route['pengerajin'] = 'pengerajin/dashboard/index';
