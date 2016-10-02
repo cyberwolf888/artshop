@@ -9,7 +9,9 @@ class Dashboard extends CI_Controller
         // Call the CI_Model constructor
         parent::__construct();
         $this->load->model('users');
+        $this->load->model('pengerajinModel');
         $this->load->model('orderMemberModel');
+        $this->load->model('orderPengerajinModel');
         if($this->session->type != 3){
             redirect('login');
         }

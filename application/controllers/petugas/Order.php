@@ -76,4 +76,21 @@ class Order extends CI_Controller
             'model'=>$model
         ]);
     }
+
+    public function detail_pengerajin($id)
+    {
+        $this->load->model('orderPengerajinModel');
+        $this->load->model('detailOrderMemberModel');
+        $this->load->model('productImagesModel');
+        $order = $this->orderPengerajinModel->find($id)->result();
+        if(!$order){
+            redirect('petugas/order/pengerajin');
+        }
+        $order = $order[0];
+        $detail = $this->detailOrderMemberModel->findByOrder($order->id)->result();
+        $this->load->view('backend/petugas/order_detail_pengerajin',[
+            'order'=>$order,
+            'detail'=>$detail
+        ]);
+    }
 }

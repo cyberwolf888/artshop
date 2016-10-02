@@ -10,11 +10,19 @@
                     </header>
                     <div class="panel-body">
                         <div class="form-group">
+                            <label for="name">Pengerajin Name</label>
+                            <input type="text" name="name" value="<?= $order->pengerajin_name ?>" class="form-control" id="name" disabled>
+                        </div>
+                        <div class="form-group">
                             <label for="name">Customer Name</label>
                             <input type="text" name="name" value="<?= $order->fullname ?>" class="form-control" id="name" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="name">No HP</label>
+                            <label for="name">Pengerajin No HP</label>
+                            <input type="text" name="no_hp" value="<?= $order->pengerajin_no_hp ?>" class="form-control" id="no_hp"  disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Customer No HP</label>
                             <input type="text" name="no_hp" value="<?= $order->no_hp ?>" class="form-control" id="no_hp"  disabled>
                         </div>
                         <div class="form-group">
@@ -74,22 +82,12 @@
                                     <td><?= $row->qty ?></td>
                                     <td><?= number_format($row->product_price*$row->qty, 0, ',', '.') ?></td>
                                 </tr>
-                            <?php $no++;endforeach; ?>
+                                <?php $no++;endforeach; ?>
                         </table>
                     </div>
                 </section>
             </div>
         </div>
-        <?php if($order->status == 1): ?>
-        <div class="row">
-            <div class="col-md-2">
-                <a href="<?= base_url('petugas/order/process_order_member/'.$order->id) ?>" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Process Order </a>
-            </div>
-            <div class="col-md-2">
-                <a href="<?= base_url('petugas/order/cancel_order_member/'.$order->id) ?>" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Cancel Order </a>
-            </div>
-        </div>
-        <?php endif; ?>
     </section>
 </section>
 <?php  $this->load->view('backend/petugas/footer1');  ?>

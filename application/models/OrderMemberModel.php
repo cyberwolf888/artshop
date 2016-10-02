@@ -22,7 +22,7 @@ class OrderMemberModel extends CI_Model
     public $token;
     public $created_at;
 
-    //status : 0=>canceled, 1=>order baru, 2=>proses pengerajin, 3=>dikirim, 4=>complate
+    //status : 0=>canceled, 1=>order baru, 2=>proses pengerajin, 3=>dikerjakan pengerajin, 4=>dikirim, 5=>conplete
     //payment : 1=>transfer bank, 2=>kartu kredit
 
     public function insert($member_id,$total)
@@ -88,7 +88,7 @@ class OrderMemberModel extends CI_Model
 
     public function getStatus($id)
     {
-        $status = ['0'=>'Canceled','1'=>'New Order','2'=>'Process','3'=>'Shipped','4'=>'Complete'];
+        $status = ['0'=>'Canceled','1'=>'New Order','2'=>'Process', '3'=>'Working','4'=>'Shipped','5'=>'Complete'];
         return $status[$id];
     }
 

@@ -62,6 +62,16 @@ class PengerajinModel extends CI_Model
         return $query;
     }
 
+    public function findByUsers($id)
+    {
+        $this->db->select('pengerajin.*,users.email,users.status AS users_status');
+        $this->db->from('pengerajin');
+        $this->db->join('users', 'users.id = pengerajin.users_id');
+        $this->db->where('users.id', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function getStatusLabel($status)
     {
         $label = ['1'=>'Available','2'=>'Full','0'=>'Banned'];

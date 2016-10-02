@@ -1,6 +1,6 @@
 <?php
-
-$h_order = $this->orderMemberModel->getNewOrder();
+$h_pengerajin = $this->pengerajinModel->findByUsers($this->session->user_id)->result()[0];
+$h_order = $this->orderPengerajinModel->findNotif($h_pengerajin->id);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +73,7 @@ $h_order = $this->orderMemberModel->getNewOrder();
                         </li>
                         <?php foreach ($h_order->result() as $h_result): ?>
                         <li>
-                            <a href="<?= base_url('petugas/order/detail_member/'.$h_result->id) ?>">
+                            <a href="<?= base_url('pengerajin/order/detail/'.$h_result->order_pengerajin_id) ?>">
                                 <span class="label label-success"><i class="fa fa-plus"></i></span>
                                 New order from <?= $h_result->fullname ?>
                             </a>

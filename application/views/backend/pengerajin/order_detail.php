@@ -1,4 +1,4 @@
-<?php  $this->load->view('backend/petugas/header1');  ?>
+<?php  $this->load->view('backend/pengerajin/header1');  ?>
 
 <section id="main-content">
     <section class="wrapper">
@@ -10,11 +10,19 @@
                     </header>
                     <div class="panel-body">
                         <div class="form-group">
+                            <label for="name">Pengerajin Name</label>
+                            <input type="text" name="name" value="<?= $order->pengerajin_name ?>" class="form-control" id="name" disabled>
+                        </div>
+                        <div class="form-group">
                             <label for="name">Customer Name</label>
                             <input type="text" name="name" value="<?= $order->fullname ?>" class="form-control" id="name" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="name">No HP</label>
+                            <label for="name">Pengerajin No HP</label>
+                            <input type="text" name="no_hp" value="<?= $order->pengerajin_no_hp ?>" class="form-control" id="no_hp"  disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Customer No HP</label>
                             <input type="text" name="no_hp" value="<?= $order->no_hp ?>" class="form-control" id="no_hp"  disabled>
                         </div>
                         <div class="form-group">
@@ -38,7 +46,7 @@
                             <input type="text" value="<?= $this->orderMemberModel->getStatus($order->status) ?>" name="status" class="form-control" id="status" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="discount">Payment Status</label>
+                            <label for="discount">Customer Payment Status</label>
                             <input type="text" value="<?= $this->orderMemberModel->getPaymentStatus($order->payment_status) ?>" name="status" class="form-control" id="status" disabled>
                         </div>
                         <div class="form-group">
@@ -74,22 +82,29 @@
                                     <td><?= $row->qty ?></td>
                                     <td><?= number_format($row->product_price*$row->qty, 0, ',', '.') ?></td>
                                 </tr>
-                            <?php $no++;endforeach; ?>
+                                <?php $no++;endforeach; ?>
                         </table>
                     </div>
                 </section>
             </div>
         </div>
-        <?php if($order->status == 1): ?>
-        <div class="row">
-            <div class="col-md-2">
-                <a href="<?= base_url('petugas/order/process_order_member/'.$order->id) ?>" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Process Order </a>
+        <?php if($order->status == 2): ?>
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="<?= base_url('pengerajin/order/process/'.$order->id) ?>" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Process Order </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="<?= base_url('pengerajin/order/cancel/'.$order->id) ?>" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Cancel Order </a>
+                </div>
             </div>
-            <div class="col-md-2">
-                <a href="<?= base_url('petugas/order/cancel_order_member/'.$order->id) ?>" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Cancel Order </a>
+        <?php endif; ?>
+        <?php if($order->status == 3): ?>
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="<?= base_url('pengerajin/order/shiped/'.$order->id) ?>" class="btn btn-primary btn-lg"><i class="fa fa-check"></i> Shipped Order </a>
+                </div>
             </div>
-        </div>
         <?php endif; ?>
     </section>
 </section>
-<?php  $this->load->view('backend/petugas/footer1');  ?>
+<?php  $this->load->view('backend/pengerajin/footer1');  ?>
