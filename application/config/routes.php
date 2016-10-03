@@ -65,6 +65,7 @@ $route['faq'] = 'frontend/faq';
 $route['contact'] = 'frontend/contact';
 $route['about'] = 'frontend/about';
 $route['search'] = 'frontend/search';
+$route['payment'] = 'frontend/payment';
 $route['logout'] = 'frontend/logout';
 
 //Admin route

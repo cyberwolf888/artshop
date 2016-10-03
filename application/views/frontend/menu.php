@@ -42,6 +42,13 @@
                             Contact Us
                         </a>
                     </li>
+                    <?php if($this->session->isLogedIn): ?>
+                        <li class="<?= $this->uri->segment(1) == 'payment' ? 'active' : '';  ?>">
+                            <a href="<?= base_url('/payment') ?>">
+                                Payment
+                            </a>
+                        </li>
+                    <?php endif; ?>
                     <li class="dropdown dropdown-mega dropdown-mega-shop" id="headerShop">
                         <a class="dropdown-toggle" href="page-login.html">
                             <i class="fa fa-user"></i> Cart (<span id="cart_total_item"><?= $this->cart->total_items() ?></span>)

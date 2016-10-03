@@ -61,4 +61,14 @@ class Member extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function findByUser($id)
+    {
+        $this->db->select('member.*,users.email, users.status');
+        $this->db->from('member');
+        $this->db->join('users', 'users.id = member.users_id');
+        $this->db->where('member.users_id', $id);
+        $query = $this->db->get();
+        return $query;
+    }
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 02 Okt 2016 pada 08.29
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 7.0.5
+-- Host: localhost
+-- Generation Time: 03 Okt 2016 pada 11.08
+-- Versi Server: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -116,7 +116,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `users_id`, `fullname`, `alamat`, `no_hp`, `photo`, `kode_pos`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', '2016-09-29 06:38:02'),
+(1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', '2016-10-03 03:32:34'),
 (2, 14, 'Member Wijaya', 'Jalan Wisnu Marga Belayu No 19', '082247464196', NULL, '82181', '2016-09-08 07:04:57', '2016-09-08 07:19:16');
 
 -- --------------------------------------------------------
@@ -186,8 +186,17 @@ CREATE TABLE `payment` (
   `member_id` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
+  `note` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `payment`
+--
+
+INSERT INTO `payment` (`id`, `order_id`, `member_id`, `image`, `status`, `note`, `created_at`) VALUES
+(1, 3, 1, '7df6b32c0e2963c3d95c367697e78bdc.jpg', 1, 'test test ', '2016-10-03 09:03:23'),
+(2, 5, 1, '24584410cc37cd0566e9b91f1af853fe.jpg', 1, 'tes ts setset se ', '2016-10-03 09:08:00');
 
 -- --------------------------------------------------------
 
@@ -354,7 +363,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'member@gmail.com', '0b77520f93de693bdab0060746e38165', '1', '1', NULL, '2016-08-27 10:15:28', '2016-09-29 06:38:02'),
+(1, 'member@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-08-27 10:15:28', '2016-10-03 03:32:34'),
 (2, 'petugas@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-08-27 16:20:19', '2016-09-10 03:23:45'),
 (3, 'pengerajin@mail.com', '538cb76330dbd380d7f81e1310a44a63', '1', '3', NULL, '2016-08-27 16:21:56', '2016-10-01 07:00:35'),
 (4, 'admin@mail.com', '0b77520f93de693bdab0060746e38165', '1', '4', NULL, '2016-08-27 16:25:43', NULL),
@@ -489,7 +498,7 @@ ALTER TABLE `order_pengerajin`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pengerajin`
 --

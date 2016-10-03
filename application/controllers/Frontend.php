@@ -316,4 +316,38 @@ class Frontend extends CI_Controller {
         }
     }
 
+    public function payment()
+    {
+        $this->load->model('member');
+        $this->load->model('orderMemberModel');
+        $this->load->model('paymentModel');
+
+        $member = $this->member->findByUser($this->session->user_id)->result()[0];
+        $order = $this->orderMemberModel->findByMember($member->id)->result();
+
+        if(isset($_POST['order_id'])){
+            //die(var_dump($_FILES['photo']));
+            $photo = null;
+            $config['upload_path']          = 'images/payment';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 2048;
+            $config['encrypt_name']         = TRUE;
+
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('photo')){
+                $photo = $this->upload->data('file_name');
+            }else{
+                $this->session->set_flashdata('error', 'Failed to upload image!');
+                redirect(base_url('payment'));
+            }
+            $this->paymentModel->insert($photo);
+            $this->session->set_flashdata('success', 'Payment success. Please wait confirmation from our customer.');
+            redirect(base_url('payment'));
+        }
+        $this->load->view('frontend/payment',[
+            'order'=>$order,
+            'member'=>$member
+        ]);
+    }
+
 }
