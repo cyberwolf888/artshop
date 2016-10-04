@@ -40,7 +40,7 @@
                     <span>Pembayaran</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Customer</a></li>
+                    <li><a  href="<?= base_url('petugas/payment/member') ?>">Customer</a></li>
                     <li><a  href="horizontal_menu.html">Pengerajin</a></li>
                 </ul>
             </li>

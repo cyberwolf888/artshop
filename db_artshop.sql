@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 03 Okt 2016 pada 11.08
+-- Generation Time: 04 Okt 2016 pada 12.07
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -186,6 +186,7 @@ CREATE TABLE `payment` (
   `member_id` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
+  `type` int(2) NOT NULL,
   `note` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -194,9 +195,10 @@ CREATE TABLE `payment` (
 -- Dumping data untuk tabel `payment`
 --
 
-INSERT INTO `payment` (`id`, `order_id`, `member_id`, `image`, `status`, `note`, `created_at`) VALUES
-(1, 3, 1, '7df6b32c0e2963c3d95c367697e78bdc.jpg', 1, 'test test ', '2016-10-03 09:03:23'),
-(2, 5, 1, '24584410cc37cd0566e9b91f1af853fe.jpg', 1, 'tes ts setset se ', '2016-10-03 09:08:00');
+INSERT INTO `payment` (`id`, `order_id`, `member_id`, `image`, `status`, `type`, `note`, `created_at`) VALUES
+(1, 3, 1, '7df6b32c0e2963c3d95c367697e78bdc.jpg', 1, 1, 'test test ', '2016-10-03 09:03:23'),
+(2, 5, 1, '24584410cc37cd0566e9b91f1af853fe.jpg', 1, 1, 'tes ts setset se ', '2016-10-03 09:08:00'),
+(3, 3, 1, '738a4fbb70070d7570cdb8d6680bbd63.JPG', 1, 1, '', '2016-10-04 02:17:03');
 
 -- --------------------------------------------------------
 
@@ -498,7 +500,7 @@ ALTER TABLE `order_pengerajin`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pengerajin`
 --

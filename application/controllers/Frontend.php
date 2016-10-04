@@ -340,7 +340,7 @@ class Frontend extends CI_Controller {
                 $this->session->set_flashdata('error', 'Failed to upload image!');
                 redirect(base_url('payment'));
             }
-            $this->paymentModel->insert($photo);
+            $this->paymentModel->insert($photo,1);
             $this->session->set_flashdata('success', 'Payment success. Please wait confirmation from our customer.');
             redirect(base_url('payment'));
         }
