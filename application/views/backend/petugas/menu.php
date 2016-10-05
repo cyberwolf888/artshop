@@ -41,7 +41,7 @@
                 </a>
                 <ul class="sub">
                     <li><a  href="<?= base_url('petugas/payment/member') ?>">Customer</a></li>
-                    <li><a  href="horizontal_menu.html">Pengerajin</a></li>
+                    <li><a  href="<?= base_url('petugas/payment/pengerajin') ?>">Pengerajin</a></li>
                 </ul>
             </li>
 

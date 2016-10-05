@@ -75,7 +75,7 @@ class OrderMemberModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_member');
-        $this->db->order_by('id','DESC');
+        $this->db->order_by('created_at','DESC');
         $query = $this->db->get();
         return $query;
     }
