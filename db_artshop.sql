@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 04 Okt 2016 pada 12.07
+-- Generation Time: 07 Okt 2016 pada 11.48
 -- Versi Server: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -149,7 +149,7 @@ CREATE TABLE `order_member` (
 INSERT INTO `order_member` (`id`, `member_id`, `address`, `fullname`, `no_hp`, `state`, `zip_code`, `note`, `payment`, `total`, `status`, `payment_status`, `token`, `created_at`) VALUES
 (1, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', '', 1, 3240000, 2, 0, 'Nr9UViKe', '2016-09-29 07:08:41'),
 (2, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', '', 1, 3240000, 4, 0, '49dwmPSx', '2016-09-29 07:12:36'),
-(3, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'test test stsetsetsesetse ', 1, 1580000, 1, 0, 'ClbMxFs0', '2016-09-29 07:13:31'),
+(3, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'test test stsetsetsesetse ', 1, 1580000, 1, 1, 'ClbMxFs0', '2016-09-29 07:13:31'),
 (4, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'asd asdasdasd asdasd asdasd a', 1, 3240000, 2, 0, 'BlTwbgym', '2016-09-29 07:15:22'),
 (5, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'tidak ada', 1, 2160000, 1, 0, 'k924VHMo', '2016-09-30 04:41:52');
 
@@ -198,7 +198,23 @@ CREATE TABLE `payment` (
 INSERT INTO `payment` (`id`, `order_id`, `member_id`, `image`, `status`, `type`, `note`, `created_at`) VALUES
 (1, 3, 1, '7df6b32c0e2963c3d95c367697e78bdc.jpg', 1, 1, 'test test ', '2016-10-03 09:03:23'),
 (2, 5, 1, '24584410cc37cd0566e9b91f1af853fe.jpg', 1, 1, 'tes ts setset se ', '2016-10-03 09:08:00'),
-(3, 3, 1, '738a4fbb70070d7570cdb8d6680bbd63.JPG', 1, 1, '', '2016-10-04 02:17:03');
+(3, 3, 1, '738a4fbb70070d7570cdb8d6680bbd63.JPG', 2, 1, '', '2016-10-04 02:17:03');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `payment_pengerajin`
+--
+
+CREATE TABLE `payment_pengerajin` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `pengerajin_id` int(11) NOT NULL,
+  `image` varchar(100) NOT NULL DEFAULT '',
+  `status` int(11) NOT NULL,
+  `note` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -427,6 +443,12 @@ ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payment_pengerajin`
+--
+ALTER TABLE `payment_pengerajin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pengerajin`
 --
 ALTER TABLE `pengerajin`
@@ -501,6 +523,11 @@ ALTER TABLE `order_pengerajin`
 --
 ALTER TABLE `payment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `payment_pengerajin`
+--
+ALTER TABLE `payment_pengerajin`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `pengerajin`
 --

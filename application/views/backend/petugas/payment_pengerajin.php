@@ -19,6 +19,7 @@
                         Manage Souvenir
                         <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="<?= base_url('petugas/payment/create_pengerajin') ?>" class="btn btn-primary" style="color: #FFF;"><i class="fa fa-plus"></i> Add New Payment</a>
                         </span>
                     </header>
                     <div class="panel-body">
@@ -46,7 +47,9 @@
                                         <td>Trasnfer Bank</td>
                                         <td><?= $this->paymentModel->getStatus($row->status) ?></td>
                                         <td><?= $row->created_at ?></td>
-                                        <td><a href="<?= base_url('petugas/payment/detail_member/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a></td>
+                                        <td>
+                                            <a href="<?= base_url('petugas/payment/detail_member/'.$row->order_id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a>
+                                        </td>
                                     </tr>
                                     <?php $no++;endforeach; ?>
                                 </tbody>

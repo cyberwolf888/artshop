@@ -62,6 +62,16 @@ class PengerajinModel extends CI_Model
         return $query;
     }
 
+    public function findByUser($id)
+    {
+        $this->db->select('pengerajin.*,users.email,users.status AS users_status');
+        $this->db->from('pengerajin');
+        $this->db->join('users', 'users.id = pengerajin.users_id');
+        $this->db->where('pengerajin.users_id', $id);
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function findByUsers($id)
     {
         $this->db->select('pengerajin.*,users.email,users.status AS users_status');

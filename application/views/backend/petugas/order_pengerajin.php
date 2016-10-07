@@ -46,9 +46,12 @@
                                         <td><?= $this->orderMemberModel->getPayment($row->payment) ?></td>
                                         <td><?= $this->orderMemberModel->getStatus($row->status) ?></td>
                                         <td><?= $this->orderMemberModel->getPaymentStatus($row->payment_status) ?></td>
-                                        <td><a href="<?= base_url('petugas/order/detail_pengerajin/'.$row->order_pengerajin_id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a></td>
+                                        <td>
+                                            <a href="<?= base_url('petugas/order/detail_pengerajin/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a>
+                                            <a href="<?= base_url('petugas/payment/create_pengerajin/'.$row->id) ?>" class="btn btn-info btn-xs"><i class="fa fa-plus"></i> Add Payment </a>
+                                        </td>
                                     </tr>
-                                    <?php $no++;endforeach; ?>
+                                <?php $no++; endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                 <tr>

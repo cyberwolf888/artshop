@@ -63,14 +63,47 @@ class Payment extends CI_Controller
 
     public function pengerajin()
     {
-        $this->load->model('paymentModel');
+        $this->load->model('paymentPengerajinModel');
 
-        $model = $this->paymentModel->findAll(2)->result();
+        $model = $this->paymentPengerajinModel->findAll()->result();
 
         $this->load->view('backend/petugas/payment_pengerajin',[
             'script'=>'backend/petugas/page_script/petugas_manage',
             'model'=>$model
         ]);
+    }
+
+    public function create_pengerajin($id)
+    {
+
+        //TODO fix bug
+        $this->load->model('paymentPengerajinModel');
+        $this->load->model('petugasToko');
+        $this->load->library('form_validation');
+
+        $pengerajin = $this->petugasToko->findByUser(2)->result();
+
+        die(var_dump($pengerajin));
+        if(isset($_FILES['photo'])){
+            //die(var_dump($_FILES['photo']));
+            $photo = null;
+            $config['upload_path']          = 'images/payment';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 2048;
+            $config['encrypt_name']         = TRUE;
+
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('photo')){
+                $photo = $this->upload->data('file_name');
+            }else{
+                $this->session->set_flashdata('error', 'Failed to upload image!');
+                redirect(base_url('petugas/order/pengerajin'));
+            }
+            $this->paymentPengerajinModel->insert($photo,1);
+            $this->session->set_flashdata('success', 'Payment success.');
+            redirect(base_url('petugas/payment/pengerajin'));
+        }
+        $this->load->view('backend/petugas/payment_pengerajin_create',['script'=>'backend/admin/page_script/petugas_create']);
     }
 
 }
