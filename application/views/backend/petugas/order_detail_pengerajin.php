@@ -46,8 +46,12 @@
                             <input type="text" value="<?= $this->orderMemberModel->getStatus($order->status) ?>" name="status" class="form-control" id="status" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="discount">Payment Status</label>
+                            <label for="discount">Payment Status From Customer</label>
                             <input type="text" value="<?= $this->orderMemberModel->getPaymentStatus($order->payment_status) ?>" name="status" class="form-control" id="status" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="discount">Payment Status</label>
+                            <input type="text" value="<?= $this->orderMemberModel->getPaymentStatus($order->order_pengerajin_payment_status) ?>" name="status" class="form-control" id="status" disabled>
                         </div>
                         <div class="form-group">
                             <label for="discount">Order Date</label>

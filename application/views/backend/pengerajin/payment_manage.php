@@ -1,4 +1,4 @@
-<?php  $this->load->view('backend/petugas/header1');  ?>
+<?php  $this->load->view('backend/pengerajin/header1');  ?>
 <section id="main-content">
     <section class="wrapper">
         <?php if($this->session->flashdata('success')!==null): ?>
@@ -41,13 +41,13 @@
                                     <tr>
                                         <td><?= $no ?></td>
                                         <td><?= $row->fullname ?></td>
-                                        <td><a href="<?= base_url('petugas/order/detail_pengerajin/'.$row->order_id) ?>">Order #<?= $row->order_id ?></a></td>
+                                        <td><a href="<?= base_url('pengerajin/order/detail/'.$row->order_id) ?>">Order #<?= $row->order_id ?></a></td>
                                         <td>Rp <?= number_format($row->total, 0, ',', '.') ?></td>
                                         <td>Trasnfer Bank</td>
                                         <td><?= $this->paymentPengerajinModel->getStatus($row->status) ?></td>
                                         <td><?= $row->created_at ?></td>
                                         <td>
-                                            <a href="<?= base_url('petugas/payment/detail_pengerajin/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a>
+                                            <a href="<?= base_url('pengerajin/payment/detail/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a>
                                         </td>
                                     </tr>
                                     <?php $no++;endforeach; ?>
@@ -72,4 +72,4 @@
         </div>
     </section>
 </section>
-<?php  $this->load->view('backend/petugas/footer1');  ?>
+<?php  $this->load->view('backend/pengerajin/footer1');  ?>

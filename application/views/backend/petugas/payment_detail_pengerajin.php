@@ -2,17 +2,7 @@
 
 <section id="main-content">
     <section class="wrapper">
-        <?php if($model->status == 1): ?>
-            <div class="row">
-                <div class="col-md-2">
-                    <a href="<?= base_url('petugas/payment/confirm/'.$model->id) ?>" class="btn btn-primary btn-lg" style="width: 100%;"><i class="fa fa-check"></i> Accept </a>
-                </div>
-                <div class="col-md-2">
-                    <a href="<?= base_url('petugas/payment/cancel/'.$model->id) ?>" class="btn btn-danger btn-lg" style="width: 100%;"><i class="fa fa-times"></i> Cancel </a>
-                </div>
-            </div>
-            <br>
-        <?php endif; ?>
+
         <div class="row">
             <div class="col-lg-3">
                 <section class="panel">
@@ -34,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Payment Status</label>
-                            <input type="text" name="name" value="<?= $this->paymentModel->getStatus($model->status) ?>" class="form-control" id="name" disabled>
+                            <input type="text" name="name" value="<?= $this->paymentPengerajinModel->getStatus($model->status) ?>" class="form-control" id="name" disabled>
                         </div>
                         <div class="form-group">
                             <label for="name">Total</label>

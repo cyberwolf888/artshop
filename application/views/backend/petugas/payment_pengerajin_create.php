@@ -31,8 +31,8 @@
                             <label for="description">Note (Optional)</label>
                             <textarea name="description" class="form-control" id="description" rows="3" required></textarea>
                         </div>
-                        <input type="hidden" name="order_id" value="<?= $id ?>">
-                        <input type="hidden" name="pengerajin_id" value="<?= $id ?>">
+                        <input type="hidden" name="order_id" value="<?= $order->order_pengerajin_id ?>">
+                        <input type="hidden" name="pengerajin_id" value="<?= $order->pengerajin_id ?>">
                         <button type="submit" class="btn btn-info">Submit</button>
                     </div>
                 </section>

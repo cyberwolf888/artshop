@@ -45,10 +45,12 @@
                                         <td>Rp <?= number_format($row->total, 0, ',', '.') ?></td>
                                         <td><?= $this->orderMemberModel->getPayment($row->payment) ?></td>
                                         <td><?= $this->orderMemberModel->getStatus($row->status) ?></td>
-                                        <td><?= $this->orderMemberModel->getPaymentStatus($row->payment_status) ?></td>
+                                        <td><?= $this->orderMemberModel->getPaymentStatus($row->order_pengerajin_payment_status) ?></td>
                                         <td>
-                                            <a href="<?= base_url('petugas/order/detail_pengerajin/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a>
-                                            <a href="<?= base_url('petugas/payment/create_pengerajin/'.$row->id) ?>" class="btn btn-info btn-xs"><i class="fa fa-plus"></i> Add Payment </a>
+                                            <a href="<?= base_url('petugas/order/detail_pengerajin/'.$row->order_pengerajin_id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Detail </a>
+                                            <?php if($row->order_pengerajin_payment_status == 0): ?>
+                                            <a href="<?= base_url('petugas/payment/create_pengerajin/'.$row->order_pengerajin_id) ?>" class="btn btn-info btn-xs"><i class="fa fa-plus"></i> Add Payment </a>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php $no++; endforeach; ?>

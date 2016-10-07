@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?= base_url('petugas') ?>">
+                <a href="<?= base_url('pengerajin/payment/manage') ?>">
                     <i class="fa fa-laptop"></i>
                     <span>Pembayaran</span>
                 </a>

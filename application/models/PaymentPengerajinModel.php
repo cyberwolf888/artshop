@@ -36,11 +36,27 @@ class PaymentPengerajinModel extends CI_Model
         return $query;
     }
 
-    public function find($id)
+    public function findAllById($id)
     {
         $this->db->select('payment_pengerajin.*, order_member.fullname, order_member.total,order_member.payment');
         $this->db->from('payment_pengerajin');
         $this->db->join('order_member','order_member.id = payment_pengerajin.order_id');
+        $this->db->where('payment_pengerajin.pengerajin_id',$id);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function find($id)
+    {
+        $this->db->select('payment_pengerajin.*, 
+                            order_pengerajin.payment_status as order_pengerajin_payment_status,
+                            pengerajin.fullname, 
+                            order_member.total,order_member.payment');
+        $this->db->from('payment_pengerajin');
+        $this->db->join('order_pengerajin','order_pengerajin.id = payment_pengerajin.order_id');
+        $this->db->join('pengerajin','pengerajin.id = order_pengerajin.pengerajin_id');
+        $this->db->join('order_member','order_member.id = order_pengerajin.order_id');
         $this->db->where('payment_pengerajin.id',$id);
         $query = $this->db->get();
         return $query;

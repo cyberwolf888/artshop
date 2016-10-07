@@ -76,14 +76,13 @@ class Payment extends CI_Controller
     public function create_pengerajin($id)
     {
 
-        //TODO fix bug
         $this->load->model('paymentPengerajinModel');
-        $this->load->model('petugasToko');
+        $this->load->model('orderPengerajinModel');
         $this->load->library('form_validation');
 
-        $pengerajin = $this->petugasToko->findByUser(2)->result();
+        $order = $this->orderPengerajinModel->find($id)->result()[0];
 
-        die(var_dump($pengerajin));
+        //die(var_dump($order));
         if(isset($_FILES['photo'])){
             //die(var_dump($_FILES['photo']));
             $photo = null;
@@ -100,10 +99,28 @@ class Payment extends CI_Controller
                 redirect(base_url('petugas/order/pengerajin'));
             }
             $this->paymentPengerajinModel->insert($photo,1);
+            //$this->orderPengerajinModel->update($id,['payment_status'=>1]);
             $this->session->set_flashdata('success', 'Payment success.');
             redirect(base_url('petugas/payment/pengerajin'));
         }
-        $this->load->view('backend/petugas/payment_pengerajin_create',['script'=>'backend/admin/page_script/petugas_create']);
+        $this->load->view('backend/petugas/payment_pengerajin_create',[
+            'script'=>'backend/admin/page_script/petugas_create',
+            'order'=>$order
+        ]);
+    }
+
+    public function detail_pengerajin($id)
+    {
+        $this->load->model('paymentPengerajinModel');
+        $model = $this->paymentPengerajinModel->find($id)->result();
+        if(!$model){
+            redirect('petugas/payment/pengerajin');
+        }
+        $model = $model[0];
+
+        $this->load->view('backend/petugas/payment_detail_pengerajin',[
+            'model'=>$model
+        ]);
     }
 
 }

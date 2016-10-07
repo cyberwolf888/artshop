@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 07 Okt 2016 pada 11.48
--- Versi Server: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Host: 127.0.0.1
+-- Generation Time: 07 Okt 2016 pada 16.01
+-- Versi Server: 10.1.13-MariaDB
+-- PHP Version: 7.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -162,17 +162,19 @@ INSERT INTO `order_member` (`id`, `member_id`, `address`, `fullname`, `no_hp`, `
 CREATE TABLE `order_pengerajin` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
-  `pengerajin_id` int(11) NOT NULL
+  `pengerajin_id` int(11) NOT NULL,
+  `payment_status` int(11) DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `order_pengerajin`
 --
 
-INSERT INTO `order_pengerajin` (`id`, `order_id`, `pengerajin_id`) VALUES
-(1, 4, 1),
-(2, 2, 1),
-(3, 1, 2);
+INSERT INTO `order_pengerajin` (`id`, `order_id`, `pengerajin_id`, `payment_status`, `created_at`) VALUES
+(1, 4, 1, 0, '2016-10-07 13:02:39'),
+(2, 2, 1, 0, '2016-10-07 13:02:40'),
+(3, 1, 2, 0, '2016-10-07 13:02:41');
 
 -- --------------------------------------------------------
 
@@ -215,6 +217,14 @@ CREATE TABLE `payment_pengerajin` (
   `note` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `payment_pengerajin`
+--
+
+INSERT INTO `payment_pengerajin` (`id`, `order_id`, `pengerajin_id`, `image`, `status`, `note`, `created_at`) VALUES
+(3, 3, 2, '7f1d8f5762969d341e1f192bbcc07080.png', 1, NULL, '2016-10-07 13:12:44'),
+(4, 1, 1, 'c6de2ece00c81e6a85de7397840258eb.png', 1, NULL, '2016-10-07 13:13:09');
 
 -- --------------------------------------------------------
 
@@ -527,7 +537,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `payment_pengerajin`
 --
 ALTER TABLE `payment_pengerajin`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pengerajin`
 --
