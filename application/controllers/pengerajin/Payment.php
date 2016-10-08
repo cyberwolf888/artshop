@@ -33,7 +33,7 @@ class Payment extends CI_Controller
         $this->load->view('backend/pengerajin/payment_manage',[
             'script'=>'backend/petugas/page_script/petugas_manage',
             'model'=>$model
-        ]);
+        ] );
     }
 
     public function detail($id)
@@ -49,5 +49,36 @@ class Payment extends CI_Controller
         $this->load->view('backend/pengerajin/payment_detail',[
             'model'=>$model
         ]);
+    }
+
+    public function confirm($id)
+    {
+        $this->load->model('paymentPengerajinModel');
+        $this->load->model('orderPengerajinModel');
+
+        $model = $this->paymentPengerajinModel->find($id)->result();
+        if(!$model){
+            redirect('pengerajin/payment/manage');
+        }
+        $model = $model[0];
+
+        $this->paymentPengerajinModel->update($id,['status'=>2]);
+        $this->orderPengerajinModel->update($model->order_id,['payment_status'=>1]);
+
+        $order = $this->orderPengerajinModel->find($model->order_id)->result();
+
+        redirect('pengerajin/payment/manage');
+    }
+
+    public function cancel($id)
+    {
+        $this->load->model('paymentPengerajinModel');
+        $model = $this->paymentPengerajinModel->find($id)->result();
+        if(!$model){
+            redirect('pengerajin/payment/manage');
+        }
+        $model = $model[0];
+        $this->paymentPengerajinModel->update($id,['status'=>0]);
+        redirect('pengerajin/payment/manage');
     }
 }

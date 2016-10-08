@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 07 Okt 2016 pada 16.01
--- Versi Server: 10.1.13-MariaDB
--- PHP Version: 7.0.5
+-- Host: localhost
+-- Generation Time: 08 Okt 2016 pada 11.50
+-- Versi Server: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -172,7 +172,7 @@ CREATE TABLE `order_pengerajin` (
 --
 
 INSERT INTO `order_pengerajin` (`id`, `order_id`, `pengerajin_id`, `payment_status`, `created_at`) VALUES
-(1, 4, 1, 0, '2016-10-07 13:02:39'),
+(1, 4, 1, 1, '2016-10-07 13:02:39'),
 (2, 2, 1, 0, '2016-10-07 13:02:40'),
 (3, 1, 2, 0, '2016-10-07 13:02:41');
 
@@ -224,7 +224,7 @@ CREATE TABLE `payment_pengerajin` (
 
 INSERT INTO `payment_pengerajin` (`id`, `order_id`, `pengerajin_id`, `image`, `status`, `note`, `created_at`) VALUES
 (3, 3, 2, '7f1d8f5762969d341e1f192bbcc07080.png', 1, NULL, '2016-10-07 13:12:44'),
-(4, 1, 1, 'c6de2ece00c81e6a85de7397840258eb.png', 1, NULL, '2016-10-07 13:13:09');
+(4, 1, 1, 'c6de2ece00c81e6a85de7397840258eb.png', 2, NULL, '2016-10-07 13:13:09');
 
 -- --------------------------------------------------------
 

@@ -80,3 +80,6 @@ $route['petugas'] = 'petugas/dashboard/index';
 
 //Pengerajin route
 $route['pengerajin'] = 'pengerajin/dashboard/index';
+
+//Member Route
+$route['member'] = 'member/dashboard/index';
