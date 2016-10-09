@@ -7,6 +7,9 @@ class Pengerajin extends CI_Controller
         // Call the CI_Model constructor
         parent::__construct();
         $this->load->model('users');
+        if($this->session->type != 4){
+            redirect('login');
+        }
     }
 
     public function manage()

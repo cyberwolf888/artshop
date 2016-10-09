@@ -57,4 +57,14 @@ class AdminModel extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function findByUser($id)
+    {
+        $this->db->select('admin.*,users.email,users.status');
+        $this->db->from('admin');
+        $this->db->join('users', 'users.id = admin.users_id');
+        $this->db->where('admin.users_id', $id);
+        $query = $this->db->get();
+        return $query;
+    }
 }

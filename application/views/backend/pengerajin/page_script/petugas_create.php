@@ -1,0 +1,1 @@
+<script type="text/javascript" src="<?= base_url() ?>backend/assets/assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>

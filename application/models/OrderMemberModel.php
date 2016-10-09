@@ -80,6 +80,16 @@ class OrderMemberModel extends CI_Model
         return $query;
     }
 
+    public function findAllMember($id)
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->where('member_id', $id);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function findByMember($id)
     {
         $this->db->select('*');

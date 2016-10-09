@@ -9,13 +9,13 @@ class Dashboard extends CI_Controller
         // Call the CI_Model constructor
         parent::__construct();
         $this->load->model('users');
-        if($this->session->type != 4){
+        if($this->session->type != 1){
             redirect('login');
         }
     }
 
     public function index()
     {
-        $this->load->view('backend/admin/dashboard',['script'=>'backend/admin/page_script/dashboard']);
+        $this->load->view('backend/member/dashboard',['script'=>'backend/member/page_script/dashboard']);
     }
 }

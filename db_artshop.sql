@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 08 Okt 2016 pada 11.50
--- Versi Server: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Host: 127.0.0.1
+-- Generation Time: 09 Okt 2016 pada 08.06
+-- Versi Server: 10.1.13-MariaDB
+-- PHP Version: 7.0.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `users_id`, `fullname`, `no_hp`, `alamat`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 4, 'Admin Artshop', '085737343456', 'Jalan Ubung Kaje', NULL, '2016-08-27 16:25:55', NULL),
+(1, 4, 'Admin Artshop', '085737343456', 'Jalan Ubung Kaje', 'a6d099ad78f52ba7dfa3fbeaf88a9eca.png', '2016-08-27 16:25:55', '2016-10-09 02:17:52'),
 (2, 12, 'Admin bedebah', '123123', 'Jalan Raya Panjer', NULL, '2016-09-07 14:55:01', '2016-09-07 14:58:02');
 
 -- --------------------------------------------------------
@@ -116,7 +116,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id`, `users_id`, `fullname`, `alamat`, `no_hp`, `photo`, `kode_pos`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Hendra Wijaya', 'Jalan Raya Pemogan No.18A', '08473737378', NULL, '80221', '2016-08-27 10:15:28', '2016-10-03 03:32:34'),
+(1, 1, 'Hendra Wijaya Ajuzz', 'Jalan Raya Pemogan No.18A', '08473737378', 'ecf02885fd97367f4f48fdf7b6f7dfde.jpg', '80221', '2016-08-27 10:15:28', '2016-10-09 02:07:13'),
 (2, 14, 'Member Wijaya', 'Jalan Wisnu Marga Belayu No 19', '082247464196', NULL, '82181', '2016-09-08 07:04:57', '2016-09-08 07:19:16');
 
 -- --------------------------------------------------------
@@ -249,7 +249,7 @@ CREATE TABLE `pengerajin` (
 --
 
 INSERT INTO `pengerajin` (`id`, `users_id`, `fullname`, `no_hp`, `alamat`, `photo`, `status`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Pengerajin Test', '084737345345', 'Jalan Raya Selatan', NULL, '1', '2016-08-27 16:23:26', '2016-10-01 07:00:35'),
+(1, 3, 'Pengerajin Test', '084737345345', 'Jalan Raya Selatan', '69a23160f0eef135b3534945476c9efc.png', '1', '2016-08-27 16:23:26', '2016-10-09 03:14:39'),
 (2, 11, 'Pengerajin Tampan', '082247464196', 'Jalan Raya Panjer', '487a1e509490b8444b527a9489a30f5b.png', '1', '2016-09-06 13:43:55', '2016-09-06 13:43:55');
 
 -- --------------------------------------------------------
@@ -274,7 +274,7 @@ CREATE TABLE `petugas_toko` (
 --
 
 INSERT INTO `petugas_toko` (`id`, `users_id`, `fullname`, `no_hp`, `alamat`, `photo`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Petugas Toko', '08573474847', 'Jalan Nangka Utara', NULL, '2016-09-05 13:08:24', '2016-09-10 03:23:45'),
+(1, 2, 'Petugas Toko', '08573474847', 'Jalan Nangka Utara', 'd8f300954ac8b89aeaf58bbcc258203a.png', '2016-09-05 13:08:24', '2016-10-09 02:24:46'),
 (2, 6, 'Petugas Wijaya', '082247464196', 'Jalan Wisnu Marga Belayu No 19', NULL, '2016-09-04 14:05:25', NULL),
 (3, 7, 'Petugas Edukasi', '082247464196', 'Jalan Raya Panjer', NULL, '2016-09-04 14:06:14', NULL),
 (4, 8, 'Ganda Edukasi', '23123123', 'Jalan P. Misol No.66', '20dd6b408bb425e6c9f0c5b5c6f9b844.png', '2016-09-04 14:20:58', NULL),
@@ -391,10 +391,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'member@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-08-27 10:15:28', '2016-10-03 03:32:34'),
-(2, 'petugas@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-08-27 16:20:19', '2016-09-10 03:23:45'),
-(3, 'pengerajin@mail.com', '538cb76330dbd380d7f81e1310a44a63', '1', '3', NULL, '2016-08-27 16:21:56', '2016-10-01 07:00:35'),
-(4, 'admin@mail.com', '0b77520f93de693bdab0060746e38165', '1', '4', NULL, '2016-08-27 16:25:43', NULL),
+(1, 'member@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-08-27 10:15:28', '2016-10-09 02:07:13'),
+(2, 'petugas@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-08-27 16:20:19', '2016-10-09 02:24:46'),
+(3, 'pengerajin@mail.com', '538cb76330dbd380d7f81e1310a44a63', '1', '3', NULL, '2016-08-27 16:21:56', '2016-10-09 03:14:39'),
+(4, 'admin@mail.com', '0b77520f93de693bdab0060746e38165', '1', '4', NULL, '2016-08-27 16:25:43', '2016-10-09 02:17:52'),
 (5, 'petugas2@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-09-04 13:47:53', NULL),
 (6, 'wijaya@gmail.com', 'f7cc65e0c9b1b0c0822222e970663691', '1', '2', NULL, '2016-09-04 14:05:24', NULL),
 (7, 'petugas1@gmail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-09-04 14:06:14', NULL),

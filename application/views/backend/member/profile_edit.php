@@ -1,4 +1,4 @@
-<?php  $this->load->view('backend/admin/header1');  ?>
+<?php  $this->load->view('backend/member/header1');  ?>
 <section id="main-content">
     <section class="wrapper">
         <?php echo validation_errors('<div class="alert alert-block alert-danger fade in">
@@ -36,9 +36,13 @@
                             <label for="alamat">Address</label>
                             <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Address" value="<?= $model->alamat ?>" required>
                         </div>
+                        <div class="form-group">
+                            <label for="alamat">Postal Code</label>
+                            <input name="kode_pos" type="text" id="kode_pos" class="form-control" value="<?= $model->kode_pos ?>" required>
+                        </div>
                         <div class="fileupload fileupload-new" data-provides="fileupload"><input type="hidden">
                             <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                <img src="<?= $model->photo=='' ? 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image':base_url('images/profile/admin/'.$model->photo) ?>" alt="">
+                                <img src="<?= $model->photo=='' ? 'http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image':base_url('images/profile/member/'.$model->photo) ?>" alt="">
                             </div>
                             <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
                             <div>
@@ -60,18 +64,21 @@
                         Users Detail
                     </header>
                     <div class="panel-body">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="email">Email address</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" value="<?= $model->email ?>" required>
+
                         </div>
                         <div class="form-group">
-                            <label for="status">Status</label>
+                             <label for="status">Status</label>
                             <select class="form-control" id="status" name="status">
                                 <option value="1" <?= $model->status == '1' ? 'selected':'' ?>>Active</option>
                                 <option value="2" <?= $model->status == '2' ? 'selected':'' ?>>Pending</option>
                                 <option value="0" <?= $model->status == '0' ? 'selected':'' ?>>Deleted</option>
                             </select>
-                        </div>
+                        </div>-->
+                        <input type="hidden" name="email" value="<?= $model->email ?>">
+                        <input type="hidden" name="status" value="<?= $model->status ?>">
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
@@ -87,4 +94,4 @@
         </div>
     </section>
 </section>
-<?php  $this->load->view('backend/admin/footer1');  ?>
+<?php  $this->load->view('backend/member/footer1');  ?>

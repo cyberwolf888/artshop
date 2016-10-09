@@ -57,4 +57,14 @@ class PetugasToko extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function findByUser($id)
+    {
+        $this->db->select('petugas_toko.*,users.email, users.status');
+        $this->db->from('petugas_toko');
+        $this->db->join('users', 'users.id = petugas_toko.users_id');
+        $this->db->where('petugas_toko.users_id', $id);
+        $query = $this->db->get();
+        return $query;
+    }
 }

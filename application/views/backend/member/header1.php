@@ -8,7 +8,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="<?= base_url() ?>backend/assets/img/favicon.html">
 
-    <title>Admin</title>
+    <title>Member</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url() ?>backend/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -50,7 +50,7 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="index-2.html" class="logo">Admin</a>
+        <a href="<?= base_url('member') ?>" class="logo">Member</a>
         <!--logo end-->
 
         <div class="top-nav ">
@@ -59,15 +59,19 @@
                 <!-- user login dropdown start-->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <?php if($this->session->photo == ""): ?>
                         <img alt="" src="<?= base_url() ?>backend/assets/img/avatar1_small.jpg">
+                        <?php else: ?>
+                        <img alt="" src="<?= base_url() ?>images/profile/member/<?= $this->session->photo ?>" width="30" height="30">
+                        <?php endif; ?>
                         <span class="username"><?= $this->session->fullname ?></span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
-                        <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                        <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="<?= base_url('member/profile/edit') ?>"><i class="fa fa-cog"></i> Settings</a></li>
+                        <li><a href="#"> </a></li>
                         <li><a href="<?= base_url('logout') ?>"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
@@ -78,6 +82,6 @@
     </header>
     <!--header end-->
     <!--sidebar start-->
-    <?php $this->load->view('backend/admin/menu') ?>
+    <?php $this->load->view('backend/member/menu') ?>
     <!--sidebar end-->
     <!--main content start-->

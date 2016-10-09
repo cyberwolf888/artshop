@@ -1,4 +1,4 @@
-<?php  $this->load->view('backend/admin/header1');  ?>
+<?php  $this->load->view('backend/member/header1');  ?>
 <section id="main-content">
     <section class="wrapper">
         <!--state overview start-->
@@ -678,4 +678,4 @@
 
     </section>
 </section>
-<?php  $this->load->view('backend/admin/footer1');  ?>
+<?php  $this->load->view('backend/member/footer1');  ?>

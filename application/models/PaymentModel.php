@@ -44,6 +44,18 @@ class PaymentModel extends CI_Model
         return $query;
     }
 
+    public function findAllMember($id)
+    {
+        $this->db->select('payment.*, order_member.fullname, order_member.total,order_member.payment');
+        $this->db->from('payment');
+        $this->db->join('order_member','order_member.id = payment.order_id');
+        $this->db->where('payment.type',1);
+        $this->db->where('payment.member_id',$id);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function getStatus($id)
     {
         $status = ['0'=>'Dinied','1'=>'New Payment','2'=>'Confirmed'];

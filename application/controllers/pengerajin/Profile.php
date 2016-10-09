@@ -1,4 +1,5 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Profile extends CI_Controller
@@ -8,7 +9,10 @@ class Profile extends CI_Controller
         // Call the CI_Model constructor
         parent::__construct();
         $this->load->model('users');
-        if ($this->session->type != 1) {
+        $this->load->model('pengerajinModel');
+        $this->load->model('orderMemberModel');
+        $this->load->model('orderPengerajinModel');
+        if ($this->session->type != 3) {
             redirect('login');
         }
     }
@@ -16,8 +20,8 @@ class Profile extends CI_Controller
     public function edit()
     {
         $this->load->library('form_validation');
-        $this->load->model('member');
-        $model = $this->member->findByUser($this->session->user_id)->result()[0];
+        $this->load->model('pengerajinModel');
+        $model = $this->pengerajinModel->findByUser($this->session->user_id)->result()[0];
         if($model){
             if($this->input->post('email')){
                 $this->form_validation->set_rules('password', 'Password', 'required');
@@ -25,7 +29,7 @@ class Profile extends CI_Controller
                 $this->form_validation->set_rules('fullname', 'Full Name', 'required|min_length[5]|max_length[100]');
                 $this->form_validation->set_rules('no_hp', 'No. Telp', 'required|min_length[5]|max_length[12]');
                 $this->form_validation->set_rules('alamat', 'Address', 'required|min_length[5]|max_length[100]');
-                $this->form_validation->set_rules('kode_pos', 'Postal Code', 'required|min_length[4]|max_length[5]');
+
                 if($this->input->post('email') == $model->email){
                     $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
                 }else{
@@ -33,18 +37,17 @@ class Profile extends CI_Controller
                 }
 
                 if ($this->form_validation->run() == FALSE){
-                    $this->load->view('backend/admin/member_edit',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
+                    $this->load->view('backend/admin/pengerajin_edit',['model'=>$model,'script'=>'backend/admin/page_script/petugas_create']);
                 }
                 else{
                     $photo = null;
                     if(isset($_FILES['photo'])){
-
                         if($model->photo!=''){
-                            if(is_file(FCPATH . 'images\profile\member' . $model->photo)){
-                                unlink(FCPATH . 'images\profile\member' . $model->photo);
+                            if(is_file(FCPATH . 'images\profile\pengerajin' . $model->photo)){
+                                unlink(FCPATH . 'images\profile\pengerajin' . $model->photo);
                             }
                         }
-                        $config['upload_path']          = FCPATH.'images\profile\member';
+                        $config['upload_path']          = FCPATH.'images\profile\pengerajin';
                         $config['allowed_types']        = 'gif|jpg|png';
                         $config['max_size']             = 2048;
                         $config['encrypt_name']         = TRUE;
@@ -62,13 +65,13 @@ class Profile extends CI_Controller
                     );
 
                     $this->users->edit($model->users_id,$data);
-                    $this->member->edit($model->id,$model->users_id,$photo,$model);
+                    $this->pengerajinModel->edit($model->id,$model->users_id,$photo,$model);
                     $this->session->photo = $photo;
-                    $this->session->set_flashdata('success', 'Member account has been succesfully edited!');
-                    redirect('member/profile/edit');
+                    $this->session->set_flashdata('success', 'Profile account has been succesfully edited!');
+                    redirect('pengerajin/profile/edit');
                 }
             }else{
-                $this->load->view('backend/member/profile_edit',['model'=>$model,'script'=>'backend/member/page_script/petugas_create']);
+                $this->load->view('backend/pengerajin/profile_edit',['model'=>$model,'script'=>'backend/pengerajin/page_script/petugas_create']);
             }
 
         }

@@ -91,15 +91,19 @@ $h_order = $this->orderPengerajinModel->findNotif($h_pengerajin->id);
                 <!-- user login dropdown start-->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" src="<?= base_url() ?>backend/assets/img/avatar1_small.jpg">
+                        <?php if($this->session->photo == ""): ?>
+                            <img alt="" src="<?= base_url() ?>backend/assets/img/avatar1_small.jpg">
+                        <?php else: ?>
+                            <img alt="" src="<?= base_url() ?>images/profile/pengerajin/<?= $this->session->photo ?>" width="30" height="30">
+                        <?php endif; ?>
                         <span class="username"><?= $this->session->fullname ?></span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
-                        <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                        <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="<?= base_url('pengerajin/profile/edit') ?>"><i class="fa fa-cog"></i> Settings</a></li>
+                        <li><a href="#"> </a></li>
                         <li><a href="<?= base_url('logout') ?>"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
