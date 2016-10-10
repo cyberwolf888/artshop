@@ -43,13 +43,8 @@
                     <span>Laporan</span>
                 </a>
                 <ul class="sub">
-                    <li><a  href="boxed_page.html">Boxed Page</a></li>
-                    <li><a  href="horizontal_menu.html">Horizontal Menu</a></li>
-                    <li><a  href="header-color.html">Different Color Top bar</a></li>
-                    <li><a  href="mega_menu.html">Mega Menu</a></li>
-                    <li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
-                    <li><a  href="email_template.html" target="_blank">Email Template</a></li>
-                </ul>
+                    <li><a  href="<?= base_url('admin/laporan/order_member_date') ?>">Order Member</a></li>
+                    <li><a  href="<?= base_url('admin/laporan/order_pengerajin_date') ?>">Order Pengerajin</a></li>
             </li>
         </ul>
         <!-- sidebar menu end-->
