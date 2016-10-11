@@ -16,7 +16,7 @@
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Manage Souvenir
+                        Report Member
                         <span class="tools pull-right">
                             <a href="javascript:;" class="fa fa-chevron-down"></a>
                         </span>
