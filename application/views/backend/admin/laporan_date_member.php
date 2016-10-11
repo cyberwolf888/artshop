@@ -1,4 +1,5 @@
 <?php  $this->load->view('backend/admin/header1');  ?>
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>backend/assets/assets/bootstrap-datetimepicker/css/datetimepicker.css" />
 <section id="main-content">
     <section class="wrapper">
         <?php echo validation_errors('<div class="alert alert-block alert-danger fade in">
@@ -6,7 +7,7 @@
                 <i class="fa fa-times"></i>
             </button>',"</div>"); ?>
         <div class="row">
-            <?= form_open('', ['enctype'=>'multipart/form-data']); ?>
+            <?= form_open(base_url('admin/laporan/laporan_member'), ['enctype'=>'multipart/form-data']); ?>
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
@@ -14,16 +15,26 @@
                     </header>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fullname">Start Date</label>
-                                    <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" required>
+                                    <input type="text" name="start_date" class="form-control" id="start_date" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="no_hp">End Date</label>
-                                    <input type="number" name="no_hp" class="form-control" id="no_hp" placeholder="Enter No. HP" required>
+                                    <input type="text" name="end_date" class="form-control" id="end_date" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="no_hp">Payment Status</label>
+                                    <select class="form-control" name="payment_status">
+                                        <option value="2">All Status</option>
+                                        <option value="0">Not Paid</option>
+                                        <option value="1">Paid</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

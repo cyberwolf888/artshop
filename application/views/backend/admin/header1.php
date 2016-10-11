@@ -23,6 +23,7 @@
     <link href="<?= base_url() ?>backend/assets/assets/advanced-datatable/media/css/demo_page.css" rel="stylesheet" />
     <link href="<?= base_url() ?>backend/assets/assets/advanced-datatable/media/css/demo_table.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?= base_url() ?>backend/assets/assets/data-tables/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>backend/assets/assets/datatables/buttons.dataTables.min.css">
 
     <!--right slidebar-->
     <link href="<?= base_url() ?>backend/assets/css/slidebars.css" rel="stylesheet">

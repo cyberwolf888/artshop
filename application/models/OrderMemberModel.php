@@ -119,4 +119,16 @@ class OrderMemberModel extends CI_Model
         $status = ['0'=>'Not Paid','1'=>'Paid'];
         return $status[$id];
     }
+
+    public function getReport($start_date, $end_date, $payment_status)
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->where('created_at >="'.$start_date.'" AND created_at <= "'.$end_date.'"');
+        if($payment_status != '2'){
+            $this->db->where('payment_status',$payment_status);
+        }
+        $query = $this->db->get();
+        return $query;
+    }
 }

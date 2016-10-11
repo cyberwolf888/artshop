@@ -14,16 +14,16 @@
                     </header>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="fullname">Start Date</label>
-                                    <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Full Name" required>
+                                    <input type="text" name="start_date" class="form-control" id="start_date" placeholder="Full Name" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="no_hp">End Date</label>
-                                    <input type="number" name="no_hp" class="form-control" id="no_hp" placeholder="Enter No. HP" required>
+                                    <input type="number" name="end_date" class="form-control" id="end_date" placeholder="Enter No. HP" required>
                                 </div>
                             </div>
                         </div>
