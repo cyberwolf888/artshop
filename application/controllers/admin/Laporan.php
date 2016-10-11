@@ -41,4 +41,24 @@ class Laporan extends CI_Controller
         $this->load->library('form_validation');
         $this->load->view('backend/admin/laporan_date_pengerajin',['script'=>'backend/admin/page_script/laporan']);
     }
+
+    public function laporan_pengerajin()
+    {
+        if(isset($_POST['start_date'])){
+            $this->load->model('orderPengerajinModel');
+            $this->load->model('orderMemberModel');
+
+            $start_date = date("Y-m-d", strtotime($this->input->post('start_date')));
+            $end_date = date("Y-m-d",strtotime($this->input->post('end_date')));
+            $payment_status = $this->input->post('payment_status');
+
+            $model = $this->orderPengerajinModel->getReport($start_date,$end_date,$payment_status)->result();
+
+
+            $this->load->view('backend/admin/laporan_pengerajin',[
+                'script'=>'backend/admin/page_script/petugas_manage',
+                'model'=>$model
+            ]);
+        }
+    }
 }
