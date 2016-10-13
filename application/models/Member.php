@@ -81,4 +81,24 @@ class Member extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function total()
+    {
+        $this->db->select('member.*,users.email,users.status');
+        $this->db->from('member');
+        $this->db->join('users', 'users.id = member.users_id');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function last5()
+    {
+        $this->db->select('member.*,users.email,users.status');
+        $this->db->from('member');
+        $this->db->join('users', 'users.id = member.users_id');
+        $this->db->limit(5);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
 }

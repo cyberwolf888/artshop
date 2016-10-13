@@ -51,7 +51,6 @@
                                         <div class="row">
                                             <div class="form-group">
                                                 <div class="col-md-12">
-                                                    <a class="pull-right" href="#">(Lost Password?)</a>
                                                     <label>Password</label>
                                                     <input name="password" type="password" value="" class="form-control input-lg">
                                                 </div>

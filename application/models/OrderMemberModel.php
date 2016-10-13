@@ -131,4 +131,40 @@ class OrderMemberModel extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function total_sales()
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function total_new_sales()
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->where('status',1);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function total_profit()
+    {
+        $this->db->select('sum(total) as profit');
+        $this->db->from('order_member');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function last5()
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->limit(5);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
 }
