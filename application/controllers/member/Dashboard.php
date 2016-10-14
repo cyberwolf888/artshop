@@ -16,6 +16,18 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        $this->load->view('backend/member/dashboard',['script'=>'backend/member/page_script/dashboard']);
+        $this->load->model('orderMemberModel');
+        $this->load->model('paymentModel');
+        $this->load->model('member');
+
+        $member = $this->member->findByUser($this->session->user_id)->result()[0];
+        $order_last5 = $this->orderMemberModel->last5By($member->id)->result();
+        $payment_last5 = $this->paymentModel->last5By($member->id)->result();
+
+        $this->load->view('backend/member/dashboard',[
+            'script'=>'backend/member/page_script/dashboard',
+            'order_last5'=>$order_last5,
+            'payment_last5'=>$payment_last5
+        ]);
     }
 }

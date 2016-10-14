@@ -24,7 +24,7 @@
         }, int_speed);
     }
 
-    countUp(123);
+    countUp(<?= $total_member ?>);
 
     function countUp2(count)
     {
@@ -47,7 +47,7 @@
         }, int_speed);
     }
 
-    countUp2(234);
+    countUp2(<?= $total_sales ?>);
 
     function countUp3(count)
     {
@@ -70,5 +70,5 @@
         }, int_speed);
     }
 
-    countUp3(345);
+    countUp3(<?= $total_new_order ?>);
 </script>

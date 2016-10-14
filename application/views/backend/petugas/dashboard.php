@@ -56,17 +56,17 @@
                         </div>
                         <table class="table table-hover personal-task">
                             <tbody>
-                            <?php foreach ($member_last5 as $member): ?>
+                            <?php foreach ($payment_last5 as $payment): ?>
                                 <tr>
-                                    <td><?= date("d-m-Y", strtotime($member->created_at)) ?></td>
+                                    <td><?= date("d-m-Y", strtotime($payment->created_at)) ?></td>
                                     <td>
-                                        <?= $member->fullname ?>
+                                        <?= $payment->fullname ?>
                                     </td>
                                     <td>
-                                        <?= $member->no_hp ?>
+                                        Order #<?= $payment->order_id ?>
                                     </td>
                                     <td>
-                                        <a class="btn btn-xs btn-info" href="<?= base_url('admin/member/view/'.$member->id) ?>">detail</a>
+                                        <a class="btn btn-xs btn-info" href="<?= base_url('petugas/payment/detail_member/'.$payment->id) ?>">detail</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

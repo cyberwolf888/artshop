@@ -38,7 +38,7 @@
                 </div>
 
                 <h2 class="mb-sm mt-sm"><strong>Contact</strong> Us</h2>
-                <form id="contactForm" action="http://preview.oklerthemes.com/porto/4.8.0/php/contact-form.php" method="POST">
+                <form id="contactForm" action="" method="POST">
                     <div class="row">
                         <div class="form-group">
                             <div class="col-md-6">
@@ -77,7 +77,7 @@
             <div class="col-md-6">
 
                 <h4 class="heading-primary mt-lg">Get in <strong>Touch</strong></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>We are professional and awesome people who work for the beauty of arts. We keep create and produce <span class="alternative-font">Clean</span> Design. Our company just a small business with big soul of arts.</p>
 
                 <hr>
 
@@ -105,21 +105,6 @@
 
 </div>
 
-<section class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="call-to-action-content">
-                    <h3>Porto is <strong>everything</strong> you need to create an <strong>awesome</strong> website!</h3>
-                    <p>The <strong>#1 Selling</strong> HTML Site Template on ThemeForest</p>
-                </div>
-                <div class="call-to-action-btn">
-                    <a href="http://themeforest.net/item/porto-responsive-html5-template/4106987" target="_blank" class="btn btn-lg btn-primary">Buy Now!</a><span class="arrow hlb hidden-xs hidden-sm hidden-md" data-appear-animation="rotateInUpLeft" style="top: -12px;"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <?php if(isset($script)) {
     $this->load->view('frontend/footer1',['script'=>$script]);

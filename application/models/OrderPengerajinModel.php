@@ -96,4 +96,18 @@ class OrderPengerajinModel extends CI_Model
         return $query;
     }
 
+    public function last5($id)
+    {
+        $this->db->select('order_pengerajin.id AS order_pengerajin_id, order_pengerajin.pengerajin_id, order_pengerajin.payment_status AS order_pengerajin_payment_status, order_member.*,pengerajin.fullname AS pengerajin_name,pengerajin.no_hp AS pengerajin_no_hp');
+        $this->db->from('order_pengerajin');
+        $this->db->join('order_member', 'order_member.id = order_pengerajin.order_id');
+        $this->db->join('pengerajin', 'pengerajin.id = order_pengerajin.pengerajin_id');
+        $this->db->where('order_pengerajin.pengerajin_id', $id);
+        $this->db->limit(5);
+        $this->db->order_by('order_pengerajin.id', 'DESC');
+        $query = $this->db->get();
+
+        return $query;
+    }
+
 }

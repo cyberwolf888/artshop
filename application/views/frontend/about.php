@@ -41,11 +41,8 @@
         <div class="row">
             <div class="col-md-10">
                 <p class="lead">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non <span class="alternative-font">metus.</span> pulvinar. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut eu risus enim, ut pulvinar lectus. Sed hendrerit nibh.
+                    We are professional and awesome people who work for the beauty of arts. We keep create and produce <span class="alternative-font">Clean</span> Design. Our company just a small business with big soul of arts.
                 </p>
-            </div>
-            <div class="col-md-2">
-                <a href="#" class="btn btn-lg btn-primary mt-xl">Join Our Team!</a>
             </div>
         </div>
 
@@ -58,8 +55,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h3 class="heading-primary"><strong>Who</strong> We Are</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc <a href="#">vehicula</a> lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. In eu justo a felis faucibus ornare vel id metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Nullam convallis, arcu vel pellentesque sodales, nisi est varius diam, ac ultrices sem ante quis sem. Proin ultricies volutpat sapien, nec scelerisque ligula mollis lobortis.</p>
-                <p>Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing <span class="alternative-font">metus</span> sit amet. In eu justo a felis faucibus ornare vel id metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula. Fusce eget metus lorem, ac viverra leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In eu libero ligula.</p>
+                <p>We are people who have the talent to create a masterpiece. Our team is made up of people who have felt the selection and has experience in making a masterpiece. Not any people who can enter into our team. Only the chosen ones who can save the world.</p>
             </div>
             <div class="col-md-4">
                 <div class="featured-box featured-box-primary">
@@ -111,71 +107,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <hr class="tall">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="heading-primary mt-xl">Our <strong>History</strong></h3>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-
-                <ul class="history">
-                    <li class="appear-animation" data-appear-animation="fadeInUp">
-                        <div class="thumb">
-                            <img src="img/office-4.jpg" alt="" />
-                        </div>
-                        <div class="featured-box">
-                            <div class="box-content">
-                                <h4 class="heading-primary"><strong>2012</strong></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus,</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="appear-animation" data-appear-animation="fadeInUp">
-                        <div class="thumb">
-                            <img src="img/office-3.jpg" alt="" />
-                        </div>
-                        <div class="featured-box">
-                            <div class="box-content">
-                                <h4 class="heading-primary"><strong>2010</strong></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="appear-animation" data-appear-animation="fadeInUp">
-                        <div class="thumb">
-                            <img src="img/office-2.jpg" alt="" />
-                        </div>
-                        <div class="featured-box">
-                            <div class="box-content">
-                                <h4 class="heading-primary"><strong>2005</strong></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus,</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="appear-animation" data-appear-animation="fadeInUp">
-                        <div class="thumb">
-                            <img src="img/office-1.jpg" alt="" />
-                        </div>
-                        <div class="featured-box">
-                            <div class="box-content">
-                                <h4 class="heading-primary"><strong>2000</strong></h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus,</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
             </div>
         </div>
 

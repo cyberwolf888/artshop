@@ -75,4 +75,16 @@ class PaymentPengerajinModel extends CI_Model
         return $this->db->update('payment_pengerajin',$data);;
     }
 
+    public function last5($id)
+    {
+        $this->db->select('payment_pengerajin.*, order_member.fullname, order_member.total,order_member.payment');
+        $this->db->from('payment_pengerajin');
+        $this->db->join('order_member','order_member.id = payment_pengerajin.order_id');
+        $this->db->where('payment_pengerajin.pengerajin_id',$id);
+        $this->db->limit(5);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
 }

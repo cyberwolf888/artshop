@@ -105,4 +105,17 @@ class ProductModel extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function search($q)
+    {
+        $this->db->select('product.*,categories.label,product_images.image');
+        $this->db->from('product');
+        $this->db->join('categories', 'categories.id = product.categories_id');
+        $this->db->join('product_images', 'product_images.product_id = product.id');
+        $this->db->like('product.name', $q);
+        $this->db->where('product.isAvailable','1');
+        $this->db->group_by('id');
+        $query = $this->db->get();
+        return $query;
+    }
 }

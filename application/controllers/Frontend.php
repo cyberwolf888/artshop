@@ -212,7 +212,15 @@ class Frontend extends CI_Controller {
 
     public function search()
     {
-        $this->load->view('frontend/search');
+        $query = $_GET['q'];
+        $this->load->model('productModel');
+
+        $product = $this->productModel->search($query)->result();
+
+        $this->load->view('frontend/search',[
+            'query'=>$query,
+            'product'=>$product,
+        ]);
     }
 
     public function faq()

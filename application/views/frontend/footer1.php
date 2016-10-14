@@ -4,7 +4,7 @@
             <div class="footer-ribbon">
                 <span>Get in Touch</span>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="newsletter">
                     <h4>Newsletter</h4>
                     <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
@@ -25,13 +25,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-3">
-                <h4>Latest Tweets</h4>
-                <!-- <div id="tweet" class="twitter" data-plugin-tweets data-plugin-options='{"username": "oklerthemes", "count": 2}'>
-                    <p>Please wait...</p>
-                </div> -->
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="contact-details">
                     <h4>Contact Us</h4>
                     <ul class="contact">
@@ -65,9 +59,9 @@
                 <div class="col-md-4">
                     <nav id="sub-menu">
                         <ul>
-                            <li><a href="<?= base_url('faq') ?>">FAQ's</a></li>
-                            <li><a href="sitemap.html">Sitemap</a></li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <!-- <li><a href="<?= base_url('faq') ?>">FAQ's</a></li> -->
+                            <!-- <li><a href="sitemap.html">Sitemap</a></li> -->
+                            <li><a href="<?= base_url('contact') ?>">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

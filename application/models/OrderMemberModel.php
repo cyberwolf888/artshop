@@ -167,4 +167,15 @@ class OrderMemberModel extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+
+    public function last5By($id)
+    {
+        $this->db->select('*');
+        $this->db->from('order_member');
+        $this->db->where('member_id',$id);
+        $this->db->limit(5);
+        $this->db->order_by('id','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
 }

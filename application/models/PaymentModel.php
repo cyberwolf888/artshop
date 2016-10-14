@@ -69,4 +69,27 @@ class PaymentModel extends CI_Model
         return $this->db->update('payment',$data);;
     }
 
+    public function last5()
+    {
+        $this->db->select('payment.*, order_member.fullname, order_member.total,order_member.payment');
+        $this->db->from('payment');
+        $this->db->join('order_member','order_member.id = payment.order_id');
+        $this->db->limit(5);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function last5By($id)
+    {
+        $this->db->select('payment.*, order_member.fullname, order_member.total,order_member.payment');
+        $this->db->from('payment');
+        $this->db->join('order_member','order_member.id = payment.order_id');
+        $this->db->where('payment.member_id',$id);
+        $this->db->limit(5);
+        $this->db->order_by('created_at','DESC');
+        $query = $this->db->get();
+        return $query;
+    }
+
 }

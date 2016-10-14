@@ -188,7 +188,7 @@
                     beautiful and awesome.
                 </h1>
                 <p class="lead">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce elementum, nulla vel pellentesque consequat, ante nulla hendrerit arcu, ac tincidunt mauris lacus sed leo. vamus suscipit molestie vestibulum.
+                    We are focus to build clean and beauty yet awesome design. We have high quality control for our design.
                 </p>
             </div>
         </div>
@@ -204,19 +204,19 @@
                 <div class="col-md-2 col-md-offset-1">
                     <div class="process-image appear-animation" data-appear-animation="bounceIn">
                         <img src="<?= base_url() ?>frontend/assets/img/home-concept-item-1.png" alt="" />
-                        <strong>Strategy</strong>
+                        <strong>Clean</strong>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="process-image appear-animation" data-appear-animation="bounceIn" data-appear-animation-delay="200">
                         <img src="<?= base_url() ?>frontend/assets/img/home-concept-item-2.png" alt="" />
-                        <strong>Planning</strong>
+                        <strong>Beauty</strong>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="process-image appear-animation" data-appear-animation="bounceIn" data-appear-animation-delay="400">
                         <img src="<?= base_url() ?>frontend/assets/img/home-concept-item-3.png" alt="" />
-                        <strong>Build</strong>
+                        <strong>Elegan</strong>
                     </div>
                 </div>
                 <div class="col-md-4 col-md-offset-1">
@@ -228,7 +228,7 @@
                                 <li><a href="portfolio-single-small-slider.html"><img class="img-responsive" src="<?= base_url() ?>frontend/assets/img/projects/project-home-3.jpg" alt="" /></a></li>
                             </ul>
                         </div>
-                        <strong class="our-work">Our Work</strong>
+                        <strong class="our-work">Awesome Design</strong>
                     </div>
                 </div>
             </div>
