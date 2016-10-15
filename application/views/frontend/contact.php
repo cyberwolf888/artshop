@@ -21,16 +21,18 @@
     </section>
 
     <!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
-    <div id="googlemaps" class="google-map"></div>
+    <!-- <div id="googlemaps" class="google-map"></div> -->
 
     <div class="container">
 
         <div class="row">
             <div class="col-md-6">
 
-                <div class="alert alert-success hidden mt-lg" id="contactSuccess">
-                    <strong>Success!</strong> Your message has been sent to us.
+                <?php if($this->session->flashdata('success')!==null): ?>
+                <div class="alert alert-success mt-lg" id="contactSuccess">
+                    <strong>Success!</strong> <?= $this->session->flashdata('success') ?>
                 </div>
+                <?php endif; ?>
 
                 <div class="alert alert-danger hidden mt-lg" id="contactError">
                     <strong>Error!</strong> There was an error sending your message.
@@ -83,9 +85,9 @@
 
                 <h4 class="heading-primary">The <strong>Office</strong></h4>
                 <ul class="list list-icons list-icons-style-3 mt-xlg">
-                    <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</li>
-                    <li><i class="fa fa-phone"></i> <strong>Phone:</strong> (123) 456-789</li>
-                    <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
+                    <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> <?= $this->alamat ?></li>
+                    <li><i class="fa fa-phone"></i> <strong>Phone:</strong> <?= $this->no_telp ?></li>
+                    <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="<?= $this->email ?>"><?= $this->email ?></a></li>
                 </ul>
 
                 <hr>

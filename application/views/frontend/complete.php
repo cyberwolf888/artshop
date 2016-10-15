@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <center><button class="btn btn-primary btn-lg" type="button" onclick="PrintElem('#invoice')" ><i class="fa fa-print"></i> PRINT</button></center><br>
+    <center><button class="btn btn-primary btn-lg" type="button" onclick="PrintElem('#invoice')" ><i class="fa fa-print"></i> PRINT</button> <a class="btn btn-primary btn-lg"  href="<?= base_url('/payment') ?>" ><i class="fa fa-money"></i> PAYMENT</a></center><br>
 
     <div id="invoice">
         <style>

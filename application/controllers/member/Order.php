@@ -44,4 +44,13 @@ class Order extends CI_Controller
             'detail'=>$detail
         ]);
     }
+
+    public function complete($id)
+    {
+        $this->load->model('orderMemberModel');
+        $update = $this->orderMemberModel->update($id,['status'=>'5']);
+        if($update){
+            redirect('member/order/manage');
+        }
+    }
 }

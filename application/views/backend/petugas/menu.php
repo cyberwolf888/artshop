@@ -11,21 +11,21 @@
 
             <li>
                 <a href="<?= base_url('petugas/category/manage') ?>">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-archive"></i>
                     <span>Category</span>
                 </a>
             </li>
 
             <li>
                 <a href="<?= base_url('petugas/souvenir/manage') ?>">
-                    <i class="fa fa-dashboard"></i>
+                    <i class="fa fa-tasks"></i>
                     <span>Souvenir</span>
                 </a>
             </li>
 
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-laptop"></i>
+                    <i class="fa fa-shopping-cart"></i>
                     <span>Pemesanan</span>
                 </a>
                 <ul class="sub">
@@ -36,7 +36,7 @@
 
             <li class="sub-menu">
                 <a href="javascript:;" >
-                    <i class="fa fa-laptop"></i>
+                    <i class="fa fa-money"></i>
                     <span>Pembayaran</span>
                 </a>
                 <ul class="sub">

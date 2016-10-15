@@ -27,6 +27,7 @@
                             <table  class="display table table-bordered table-striped" id="dynamic-table">
                                 <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Price</th>
@@ -36,8 +37,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($model as $row): ?>
+                                    <?php $no=1; foreach($model as $row): ?>
                                         <tr>
+                                            <td><?= $no ?></td>
                                         <td><?= $row->name ?></td>
                                         <td><?= $row->label ?></td>
                                         <td>Rp. <?= number_format($row->price,0,',','.') ?></td>
@@ -49,10 +51,11 @@
                                             <a href="<?= base_url('petugas/souvenir/view/'.$row->id) ?>" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </a>
                                         </td>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    <?php $no++; endforeach; ?>
                                 </tbody>
                                 <tfoot>
                                 <tr>
+                                    <th>No</th>
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Price</th>

@@ -57,6 +57,7 @@
                 <h3 class="heading-primary"><strong>Who</strong> We Are</h3>
                 <p>We are people who have the talent to create a masterpiece. Our team is made up of people who have felt the selection and has experience in making a masterpiece. Not any people who can enter into our team. Only the chosen ones who can save the world.</p>
             </div>
+            <!--
             <div class="col-md-4">
                 <div class="featured-box featured-box-primary">
                     <div class="box-content">
@@ -108,6 +109,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
 
     </div>

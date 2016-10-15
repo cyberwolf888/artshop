@@ -29,9 +29,9 @@
                 <div class="contact-details">
                     <h4>Contact Us</h4>
                     <ul class="contact">
-                        <li><p><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</p></li>
-                        <li><p><i class="fa fa-phone"></i> <strong>Phone:</strong> (123) 456-789</p></li>
-                        <li><p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></p></li>
+                        <li><p><i class="fa fa-map-marker"></i> <strong>Address:</strong> <?= $this->alamat ?></p></li>
+                        <li><p><i class="fa fa-phone"></i> <strong>Phone:</strong> <?= $this->no_telp ?></p></li>
+                        <li><p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="<?= $this->email ?>"><?= $this->email ?></a></p></li>
                     </ul>
                 </div>
             </div>

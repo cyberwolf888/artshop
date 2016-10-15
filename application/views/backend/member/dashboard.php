@@ -24,7 +24,7 @@
                                     Order #<?= $payment->order_id ?>
                                 </td>
                                 <td>
-                                    <a class="btn btn-xs btn-info" href="<?= base_url('petugas/payment/detail_member/'.$payment->id) ?>">detail</a>
+                                    <a class="btn btn-xs btn-info" href="<?= base_url('member/payment/detail/'.$payment->id) ?>">detail</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

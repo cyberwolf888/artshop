@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="mb-none"><strong><?= $category->label ?></strong></h1>
-				<p>Showing 1–12 of <?= $qproduct->num_rows() ?> results.</p>
+				<!-- <p>Showing 1–12 of <?= $qproduct->num_rows() ?> results.</p> -->
             </div>
         </div>
 
@@ -62,7 +62,7 @@
             </ul>
 
         </div>
-
+        <!--
         <div class="row">
             <div class="col-md-12">
                 <ul class="pagination pull-right">
@@ -74,7 +74,7 @@
                 </ul>
             </div>
         </div>
-
+        -->
     </div>
 
 </div>

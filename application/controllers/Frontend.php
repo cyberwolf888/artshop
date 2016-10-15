@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Frontend extends CI_Controller {
 
+    public $alamat = "asdasd";
+    public $no_telp = "(123) 456-789";
+    public $email = "mail@example.com";
+
     public function __construct()
     {
         // Call the CI_Model constructor
@@ -230,6 +234,26 @@ class Frontend extends CI_Controller {
 
     public function contact()
     {
+        ini_set('smtp_server','localhost');
+        ini_set('sendmail_path','C:\xampp\mailtodisk\mailtodisk.exe');
+        if(isset($_POST['email'])){
+            $to = "aboutzero08@gmail.com";
+            $subject = $this->input->post('name').' - '.$this->input->post('subject');
+            $from = $this->input->post('email');
+
+            $headers  = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From: '.$from."\r\n".
+                'Reply-To: '.$from."\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+
+            $message = '<html><body>';
+            $message .= '<p style="color:#000000;font-size:18px;">'.$this->input->post('message').'</p>';
+            $message .= '</body></html>';
+
+            //mail($to, $subject, $message, $headers);
+            $this->session->set_flashdata('success', 'Please wait reply from our customer support.');
+        }
         $this->load->view('frontend/contact');
     }
 
@@ -349,7 +373,7 @@ class Frontend extends CI_Controller {
                 redirect(base_url('payment'));
             }
             $this->paymentModel->insert($photo,1);
-            $this->session->set_flashdata('success', 'Payment success. Please wait confirmation from our customer.');
+            $this->session->set_flashdata('success', 'Payment success. Please wait confirmation from our customer support.');
             redirect(base_url('payment'));
         }
         $this->load->view('frontend/payment',[

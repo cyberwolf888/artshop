@@ -2,6 +2,14 @@
 
 <section id="main-content">
     <section class="wrapper">
+        <?php if($order->status == 4): ?>
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="<?= base_url('member/order/complete/'.$order->id) ?>" class="btn btn-primary btn-lg" style="width: 100%;"><i class="fa fa-check"></i> Complete </a>
+                </div>
+            </div>
+            <br>
+        <?php endif; ?>
         <div class="row">
             <div class="col-lg-6">
                 <section class="panel">

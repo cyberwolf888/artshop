@@ -19,6 +19,7 @@ class Souvenir extends CI_Controller
     {
         $this->load->model('productModel');
         $model = $this->productModel->getAll()->result();
+        //die(var_dump($model));
         $this->load->view('backend/petugas/souvenir_manage',[
             'script'=>'backend/petugas/page_script/petugas_manage',
             'model'=>$model

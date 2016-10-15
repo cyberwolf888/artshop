@@ -10,13 +10,13 @@
             </li>
             <li>
                 <a href="<?= base_url('pengerajin/order/manage') ?>">
-                    <i class="fa fa-laptop"></i>
+                    <i class="fa fa-shopping-cart"></i>
                     <span>Pemesanan</span>
                 </a>
             </li>
             <li>
                 <a href="<?= base_url('pengerajin/payment/manage') ?>">
-                    <i class="fa fa-laptop"></i>
+                    <i class="fa fa-money"></i>
                     <span>Pembayaran</span>
                 </a>
             </li>

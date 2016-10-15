@@ -34,6 +34,7 @@ class ProductModel extends CI_Model
         $this->db->select('product.*,categories.label');
         $this->db->from('product');
         $this->db->join('categories', 'categories.id = product.categories_id');
+        $this->db->order_by('product.id','DESC');
         $query = $this->db->get();
         return $query;
     }

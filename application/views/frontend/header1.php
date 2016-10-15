@@ -85,7 +85,7 @@
                             </div>
                             <nav class="header-nav-top">
                                 <ul class="nav nav-pills">
-                                    <?php if($this->session->isLogedIn && $this->session->type == 1): ?>
+                                    <?php if($this->session->isLogedIn): ?>
                                         <li class="hidden-xs">
                                             <a href="<?= base_url("/logout") ?>"><i class="fa fa-angle-right"></i> Sign-out</a>
                                         </li>
@@ -98,7 +98,7 @@
                                         </li>
                                     <?php endif; ?>
                                     <li>
-                                        <span class="ws-nowrap"><i class="fa fa-phone"></i> (123) 456-789</span>
+                                        <span class="ws-nowrap"><i class="fa fa-phone"></i> <?= $this->no_telp ?></span>
                                     </li>
                                 </ul>
                             </nav>
