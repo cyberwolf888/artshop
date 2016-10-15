@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Okt 2016 pada 08.06
+-- Generation Time: 15 Okt 2016 pada 14.17
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -63,8 +63,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `label`, `created_at`, `updated_at`) VALUES
-(1, 'Nackles', '2016-09-13 03:05:28', '2016-09-13 03:05:43'),
-(2, 'Ring', '2016-09-13 03:05:35', NULL);
+(1, ' Key Chain', '2016-09-13 03:05:28', '2016-10-15 10:15:11'),
+(2, 'Decoration', '2016-09-13 03:05:35', '2016-10-15 10:15:43');
 
 -- --------------------------------------------------------
 
@@ -91,7 +91,12 @@ INSERT INTO `detail_order_member` (`id`, `order_id`, `product_id`, `qty`, `produ
 (3, 3, 1, 1, 'Gelang Sakti', 500000),
 (4, 3, 2, 1, 'Gendi Bedebah', 1080000),
 (5, 4, 2, 3, 'Gendi Bedebah', 1080000),
-(6, 5, 2, 2, 'Gendi Bedebah', 1080000);
+(6, 5, 2, 2, 'Gendi Bedebah', 1080000),
+(7, 6, 2, 2, 'Gendi Bedebah', 1080000),
+(8, 6, 1, 1, 'Gelang Sakti', 500000),
+(9, 1, 1, 1, 'Natal Tree', 500000),
+(10, 1, 4, 1, 'Lonceng Owl', 120000),
+(11, 1, 2, 3, 'Welcome Sign Bird', 450000);
 
 -- --------------------------------------------------------
 
@@ -117,7 +122,8 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`id`, `users_id`, `fullname`, `alamat`, `no_hp`, `photo`, `kode_pos`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Hendra Wijaya Ajuzz', 'Jalan Raya Pemogan No.18A', '08473737378', 'ecf02885fd97367f4f48fdf7b6f7dfde.jpg', '80221', '2016-08-27 10:15:28', '2016-10-09 02:07:13'),
-(2, 14, 'Member Wijaya', 'Jalan Wisnu Marga Belayu No 19', '082247464196', NULL, '82181', '2016-09-08 07:04:57', '2016-09-08 07:19:16');
+(2, 14, 'Member Wijaya', 'Jalan Wisnu Marga Belayu No 19', '082247464196', NULL, '82181', '2016-09-08 07:04:57', '2016-09-08 07:19:16'),
+(3, 15, 'Omi Putra', 'Jalan Raya Ubub', '084736373628', NULL, '82181', '2016-10-15 09:49:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -147,11 +153,7 @@ CREATE TABLE `order_member` (
 --
 
 INSERT INTO `order_member` (`id`, `member_id`, `address`, `fullname`, `no_hp`, `state`, `zip_code`, `note`, `payment`, `total`, `status`, `payment_status`, `token`, `created_at`) VALUES
-(1, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', '', 1, 3240000, 2, 0, 'Nr9UViKe', '2016-09-29 07:08:41'),
-(2, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', '', 1, 3240000, 4, 0, '49dwmPSx', '2016-09-29 07:12:36'),
-(3, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'test test stsetsetsesetse ', 1, 1580000, 1, 1, 'ClbMxFs0', '2016-09-29 07:13:31'),
-(4, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'asd asdasdasd asdasd asdasd a', 1, 3240000, 2, 0, 'BlTwbgym', '2016-09-29 07:15:22'),
-(5, 1, 'Jalan Raya Pemogan No.18A', 'Hendra Wijaya', '08473737378', 'Bali', '80221', 'tidak ada', 1, 2160000, 1, 0, 'k924VHMo', '2016-09-30 04:41:52');
+(1, 3, 'Jalan Raya Ubub', 'Omi Putra', '084736373628', 'Bali', '82181', 'tolong proses dengan cepat', 1, 1970000, 5, 1, 'FyTbw8Vi', '2016-10-15 10:38:24');
 
 -- --------------------------------------------------------
 
@@ -172,9 +174,7 @@ CREATE TABLE `order_pengerajin` (
 --
 
 INSERT INTO `order_pengerajin` (`id`, `order_id`, `pengerajin_id`, `payment_status`, `created_at`) VALUES
-(1, 4, 1, 1, '2016-10-07 13:02:39'),
-(2, 2, 1, 0, '2016-10-07 13:02:40'),
-(3, 1, 2, 0, '2016-10-07 13:02:41');
+(1, 1, 1, 1, '2016-10-15 10:39:27');
 
 -- --------------------------------------------------------
 
@@ -198,9 +198,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `order_id`, `member_id`, `image`, `status`, `type`, `note`, `created_at`) VALUES
-(1, 3, 1, '7df6b32c0e2963c3d95c367697e78bdc.jpg', 1, 1, 'test test ', '2016-10-03 09:03:23'),
-(2, 5, 1, '24584410cc37cd0566e9b91f1af853fe.jpg', 1, 1, 'tes ts setset se ', '2016-10-03 09:08:00'),
-(3, 3, 1, '738a4fbb70070d7570cdb8d6680bbd63.JPG', 2, 1, '', '2016-10-04 02:17:03');
+(1, 1, 3, '5e3c3941fec33418d329ff603e8cc04c.jpg', 2, 1, 'tolong dicek segera', '2016-10-15 10:38:43');
 
 -- --------------------------------------------------------
 
@@ -223,8 +221,7 @@ CREATE TABLE `payment_pengerajin` (
 --
 
 INSERT INTO `payment_pengerajin` (`id`, `order_id`, `pengerajin_id`, `image`, `status`, `note`, `created_at`) VALUES
-(3, 3, 2, '7f1d8f5762969d341e1f192bbcc07080.png', 1, NULL, '2016-10-07 13:12:44'),
-(4, 1, 1, 'c6de2ece00c81e6a85de7397840258eb.png', 2, NULL, '2016-10-07 13:13:09');
+(1, 1, 1, '309f0f87d13d7b11b75360957062e7c9.jpg', 2, NULL, '2016-10-15 10:41:53');
 
 -- --------------------------------------------------------
 
@@ -249,7 +246,7 @@ CREATE TABLE `pengerajin` (
 --
 
 INSERT INTO `pengerajin` (`id`, `users_id`, `fullname`, `no_hp`, `alamat`, `photo`, `status`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Pengerajin Test', '084737345345', 'Jalan Raya Selatan', '69a23160f0eef135b3534945476c9efc.png', '1', '2016-08-27 16:23:26', '2016-10-09 03:14:39'),
+(1, 3, 'Gede Sudana', '084737345345', 'Jalan Raya Selatan', 'b61602bd7e30ea859db9a0d95124e77d.png', '1', '2016-08-27 16:23:26', '2016-10-15 10:40:21'),
 (2, 11, 'Pengerajin Tampan', '082247464196', 'Jalan Raya Panjer', '487a1e509490b8444b527a9489a30f5b.png', '1', '2016-09-06 13:43:55', '2016-09-06 13:43:55');
 
 -- --------------------------------------------------------
@@ -309,9 +306,10 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `categories_id`, `name`, `description`, `price`, `discount`, `isSale`, `isHot`, `isAvailable`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Gelang Sakti', 'Gelang paling sakti di muka bumi', 500000, 0, '1', '1', '1', '2016-09-13 08:20:42', '2016-09-14 05:25:55'),
-(2, 1, 'Gendi Bedebah', 'Gendi yang memiliki kekuatan gaib', 1200000, 10, '0', '1', '1', '2016-09-24 03:28:06', NULL),
-(3, 1, 'Kalung Sakti', 'Kalung paling saktu yang ada dimuka bumi', 4000000, 0, NULL, NULL, '1', '2016-09-24 07:58:28', '2016-09-24 07:59:34');
+(1, 2, 'Natal Tree', 'Awesome natal tree for your home', 500000, 0, '1', '1', '1', '2016-09-13 08:20:42', '2016-10-15 10:20:37'),
+(2, 1, 'Welcome Sign Bird', 'Nicelook welcome sign', 500000, 10, NULL, '1', '1', '2016-09-24 03:28:06', '2016-10-15 10:37:27'),
+(3, 1, 'Lonceng Bird', 'Great look lonceng', 300000, 0, '1', '1', '1', '2016-09-24 07:58:28', '2016-10-15 10:37:18'),
+(4, 1, 'Lonceng Owl', 'nice owl lonceng for wesome people', 120000, 0, NULL, '1', '1', '2016-10-15 10:22:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -333,17 +331,20 @@ CREATE TABLE `product_detail` (
 --
 
 INSERT INTO `product_detail` (`id`, `product_id`, `label`, `value`, `created_at`, `updated_at`) VALUES
-(6, 1, 'Color', 'Red', '2016-09-14 05:25:55', NULL),
-(7, 1, 'Weight', '12 Kg', '2016-09-14 05:25:55', NULL),
-(8, 1, 'Dimensions', '5cm x 5cm x 5cm', '2016-09-14 05:25:55', NULL),
-(9, 2, 'Color', 'Hitam', '2016-09-24 03:28:06', NULL),
-(10, 2, 'Weight', '12 kg', '2016-09-24 03:28:06', NULL),
-(11, 2, 'Dimensions', '12m x 12m x 12m', '2016-09-24 03:28:06', NULL),
-(12, 2, 'Size', '23', '2016-09-24 03:28:06', NULL),
-(17, 3, 'Color', 'Red', '2016-09-24 07:59:34', NULL),
-(18, 3, 'Weight', '2 kg', '2016-09-24 07:59:34', NULL),
-(19, 3, 'Dimensions', '12 x 12', '2016-09-24 07:59:34', NULL),
-(20, 3, 'Size', '33', '2016-09-24 07:59:34', NULL);
+(33, 1, 'Color', 'Green', '2016-10-15 10:20:37', NULL),
+(34, 1, 'Weight', '5 Kg', '2016-10-15 10:20:37', NULL),
+(35, 1, 'Dimensions', '5cm x 5cm x 5cm', '2016-10-15 10:20:37', NULL),
+(36, 4, 'Color', 'Brown', '2016-10-15 10:22:12', NULL),
+(37, 4, 'Weight', '300 g', '2016-10-15 10:22:12', NULL),
+(38, 4, 'Dimensions', '5cm x 5 cm', '2016-10-15 10:22:12', NULL),
+(39, 3, 'Color', 'Red', '2016-10-15 10:37:18', NULL),
+(40, 3, 'Weight', '1 kg', '2016-10-15 10:37:18', NULL),
+(41, 3, 'Dimensions', '12 x 12', '2016-10-15 10:37:18', NULL),
+(42, 3, 'Size', '33', '2016-10-15 10:37:18', NULL),
+(43, 2, 'Color', 'Hitam', '2016-10-15 10:37:27', NULL),
+(44, 2, 'Weight', '1 kg', '2016-10-15 10:37:27', NULL),
+(45, 2, 'Dimensions', '12m x 12m x 12m', '2016-10-15 10:37:27', NULL),
+(46, 2, 'Size', '23', '2016-10-15 10:37:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -362,12 +363,13 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`id`, `product_id`, `image`) VALUES
-(9, 2, '64a8e62b01b9b2fea81dc1167a28de19.png'),
-(10, 2, 'b2ab392f0a21e8a6d0c5c7e71cc010b9.jpg'),
-(11, 1, 'a45e953bf7dda64e68a4234f4b101bd0.jpg'),
-(12, 1, 'd59080e48d10de7618a9a94f074f3306.jpg'),
-(13, 3, 'e09db8965aa3c2a8a718da3a1f91e483.jpg'),
-(14, 3, 'e44ca608dedce37cd1a6557c99e36fd0.jpg');
+(15, 2, '62262078912d45d5fb31de4209d8824b.jpg'),
+(16, 2, 'aaabfc0d0fd11041e769861b86c171a6.jpg'),
+(17, 3, '887b503c71acd85c1ab3fccb2c434ffd.jpg'),
+(18, 3, 'fc9c2d806f363740f8a7ef7203c2bb18.jpg'),
+(19, 1, 'd2045a10c2fe97d4043050125c59cad1.jpg'),
+(20, 1, '17bb664d6672a92b8a65c4067ae1d53c.jpg'),
+(21, 4, '221bbbd2f9ad0fbbd938386f49afb60f.jpg');
 
 -- --------------------------------------------------------
 
@@ -393,7 +395,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `created_at`, `updated_at`) VALUES
 (1, 'member@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-08-27 10:15:28', '2016-10-09 02:07:13'),
 (2, 'petugas@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-08-27 16:20:19', '2016-10-09 02:24:46'),
-(3, 'pengerajin@mail.com', '538cb76330dbd380d7f81e1310a44a63', '1', '3', NULL, '2016-08-27 16:21:56', '2016-10-09 03:14:39'),
+(3, 'pengerajin@mail.com', '538cb76330dbd380d7f81e1310a44a63', '1', '3', NULL, '2016-08-27 16:21:56', '2016-10-15 10:40:21'),
 (4, 'admin@mail.com', '0b77520f93de693bdab0060746e38165', '1', '4', NULL, '2016-08-27 16:25:43', '2016-10-09 02:17:52'),
 (5, 'petugas2@mail.com', '563342b9879d30ae181d503c28b7f416', '1', '2', NULL, '2016-09-04 13:47:53', NULL),
 (6, 'wijaya@gmail.com', 'f7cc65e0c9b1b0c0822222e970663691', '1', '2', NULL, '2016-09-04 14:05:24', NULL),
@@ -404,7 +406,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `status`, `type`, `token`, `crea
 (11, 'xxx.official@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '2', '2', NULL, '2016-09-06 13:36:29', '2016-09-06 13:43:55'),
 (12, 'admin.official@gmail.com', '0b77520f93de693bdab0060746e38165', '2', '4', NULL, '2016-09-07 14:55:00', '2016-09-07 14:58:02'),
 (13, 'member.imd@gmail.com', '8ed358a7da3cc760364909d4aaf7321e', '2', '2', NULL, '2016-09-08 07:02:27', '2016-09-08 07:24:07'),
-(14, 'asdmember.imd@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-09-08 07:04:57', '2016-09-08 07:19:16');
+(14, 'asdmember.imd@gmail.com', '8eba3e116533a6e2c3bde334f5e65ce7', '1', '1', NULL, '2016-09-08 07:04:57', '2016-09-08 07:19:16'),
+(15, 'omi@gmail.com', '1c0cae3cc9870496e66e3d011656630a', '1', '1', NULL, '2016-10-15 09:49:22', NULL);
 
 --
 -- Indexes for dumped tables
@@ -512,32 +515,32 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `detail_order_member`
 --
 ALTER TABLE `detail_order_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `order_member`
 --
 ALTER TABLE `order_member`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `order_pengerajin`
 --
 ALTER TABLE `order_pengerajin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `payment_pengerajin`
 --
 ALTER TABLE `payment_pengerajin`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pengerajin`
 --
@@ -552,22 +555,22 @@ ALTER TABLE `petugas_toko`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `product_detail`
 --
 ALTER TABLE `product_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

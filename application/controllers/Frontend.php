@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Frontend extends CI_Controller {
 
-    public $alamat = "asdasd";
-    public $no_telp = "(123) 456-789";
-    public $email = "mail@example.com";
+    public $alamat = "Alamatnya JI andong, Ubud.";
+    public $no_telp = "(0361) 977483";
+    public $email = "maharthaarts@yahoo.com";
 
     public function __construct()
     {
