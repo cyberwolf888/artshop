@@ -11,13 +11,13 @@
             <li>
                 <a href="<?= base_url('pengerajin/order/manage') ?>">
                     <i class="fa fa-shopping-cart"></i>
-                    <span>Pemesanan</span>
+                    <span>Order</span>
                 </a>
             </li>
             <li>
                 <a href="<?= base_url('pengerajin/payment/manage') ?>">
                     <i class="fa fa-money"></i>
-                    <span>Pembayaran</span>
+                    <span>Payment</span>
                 </a>
             </li>
         <!-- sidebar menu end-->

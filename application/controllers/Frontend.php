@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Frontend extends CI_Controller {
 
-    public $alamat = "Alamatnya JI andong, Ubud.";
+    public $alamat = "JI andong, Ubud.";
     public $no_telp = "(0361) 977483";
     public $email = "maharthaarts@yahoo.com";
 

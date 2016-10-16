@@ -26,7 +26,7 @@
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-shopping-cart"></i>
-                    <span>Pemesanan</span>
+                    <span>Order</span>
                 </a>
                 <ul class="sub">
                     <li><a  href="<?= base_url('petugas/order/member') ?>">Customer</a></li>
@@ -37,7 +37,7 @@
             <li class="sub-menu">
                 <a href="javascript:;" >
                     <i class="fa fa-money"></i>
-                    <span>Pembayaran</span>
+                    <span>Payment</span>
                 </a>
                 <ul class="sub">
                     <li><a  href="<?= base_url('petugas/payment/member') ?>">Customer</a></li>

@@ -79,15 +79,18 @@
             <div class="col-md-6">
 
                 <h4 class="heading-primary mt-lg">Extra <strong>Information</strong></h4>
+                <p>Please do fund transfer to bellow rek:</p>
+                <p><b>BCA</b><br>7725142048 (Maharta Handircrat)</p>
+                <p><b>Mandiri</b><br>9000013674529 (Maharta Handircrat)</p>
                 <p>If you have a problem to do payment processs please contact Our customer support.</p>
 
                 <hr>
 
                 <h4 class="heading-primary">The <strong>Office</strong></h4>
                 <ul class="list list-icons list-icons-style-3 mt-xlg">
-                    <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, United States</li>
-                    <li><i class="fa fa-phone"></i> <strong>Phone:</strong> (123) 456-789</li>
-                    <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
+                    <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> <?= $this->alamat ?></li>
+                    <li><i class="fa fa-phone"></i> <strong>Phone:</strong> <?= $this->no_telp ?></li>
+                    <li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="<?= $this->email ?>"><?= $this->email ?></a></li>
                 </ul>
 
                 <hr>
