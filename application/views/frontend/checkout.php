@@ -127,13 +127,13 @@
                                                 </a>
                                             </td>
                                             <td class="product-name">
-                                                <a href="<?= base_url('product/'.$content['id']) ?>">Photo Camera</a>
+                                                <a href="<?= base_url('product/'.$content['id']) ?>"><?= $content['name'] ?></a>
                                             </td>
                                             <td class="product-price">
                                                 <span class="amount">Rp. <?= number_format($content['price'],0,',','.') ?></span>
                                             </td>
                                             <td class="product-quantity">
-                                                1
+                                                <?= $content['qty'] ?>
                                             </td>
                                             <td class="product-subtotal">
                                                 <span class="amount">Rp. <?= number_format($content['price']*$content['qty'],0,',','.') ?></span>

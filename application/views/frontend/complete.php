@@ -128,8 +128,8 @@
                             <tr>
                                 <td>
                                     Mahartha Handicraft, Inc.<br>
-                                    12345 Sunny Road<br>
-                                    Sunnyville, TX 12345
+                                    <?= $this->alamat ?><br>
+                                    <?= $this->no_telp ?>
                                 </td>
 
                                 <td>

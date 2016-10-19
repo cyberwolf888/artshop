@@ -30,7 +30,7 @@ class Frontend extends CI_Controller {
     {
         if($this->users->isLogedIn()){
             if($this->session->type==1){
-                redirect('/member');
+                redirect('/');
             }elseif($this->session->type==2){
                 redirect('/petugas');
             }elseif($this->session->type==3){
@@ -178,6 +178,7 @@ class Frontend extends CI_Controller {
             $total = $this->cart->total();
             $order_id = $this->orderMemberModel->insert($member->id,$total);
             foreach ($this->cart->contents() as $cart){
+
                 $this->detailOrderMemberModel->insert([
                     'order_id'=>$order_id,
                     'product_id'=>$cart['id'],
@@ -188,6 +189,7 @@ class Frontend extends CI_Controller {
             }
             $this->cart->destroy();
             $this->session->set_userdata('order_id', $order_id);
+
             redirect('frontend/complete');
         }
         $this->load->view('frontend/checkout',[

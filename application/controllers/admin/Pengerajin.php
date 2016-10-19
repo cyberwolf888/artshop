@@ -50,7 +50,7 @@ class Pengerajin extends CI_Controller
                         $photo = $this->upload->data('file_name');
                     }
                 }
-                $user_id = $this->users->insert_petugas();
+                $user_id = $this->users->insert_pengerajin();
                 $this->pengerajinModel->insert($user_id,$photo);
                 $this->session->set_flashdata('success', 'Pengerajin account has been succesfully created!');
                 redirect('admin/pengerajin/manage');
